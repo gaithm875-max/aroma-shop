@@ -1,0 +1,146 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* استيراد الخطوط الفاخرة من Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Cairo:wght@300;400;500;600;700&family=Tajawal:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* الستايلات الأساسية */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-cream-light text-brown-dark font-cairo;
+  direction: rtl;
+}
+
+/* Scrollbar مخصص */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-cream;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gold rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-gold-light;
+}
+
+/* تأثيرات الحركة الناعمة */
+@layer utilities {
+  .transition-luxury {
+    @apply transition-all duration-300 ease-in-out;
+  }
+
+  .hover-scale {
+    @apply transform transition-transform duration-300 hover:scale-105;
+  }
+
+  .hover-lift {
+    @apply transform transition-all duration-300 hover:-translate-y-2 hover:shadow-luxury-hover;
+  }
+}
+
+/* تأثيرات الزجاج الضبابي */
+.glass-effect {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* تدرجات فاخرة */
+.gradient-text {
+  @apply bg-gradient-to-r from-gold-light to-gold bg-clip-text text-transparent;
+}
+
+.gradient-gold-hover {
+  @apply bg-gradient-to-r from-gold to-gold-light hover:from-gold-light hover:to-gold transition-all duration-300;
+}
+
+/* أزرار فاخرة */
+.btn-primary {
+  @apply bg-gradient-to-r from-gold-light to-gold text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 hover:shadow-luxury-hover hover:scale-105 active:scale-95;
+}
+
+.btn-secondary {
+  @apply border-2 border-gold text-gold px-8 py-3 rounded-lg font-semibold transition-all duration-300 hover:bg-gold hover:text-white hover:shadow-luxury active:scale-95;
+}
+
+/* بطاقات فاخرة */
+.card-luxury {
+  @apply bg-white rounded-2xl shadow-luxury transition-all duration-300 hover:shadow-luxury-hover;
+}
+
+/* التأثيرات عند التحميل */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.6s ease-out;
+}
+
+/* تأثير التألق */
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+.shimmer {
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.3) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  background-size: 1000px 100%;
+  animation: shimmer 2s infinite;
+}
+
+/* العناوين الفاخرة */
+h1, h2, h3, h4, h5, h6 {
+  @apply font-playfair;
+}
+
+/* الروابط */
+a {
+  @apply transition-colors duration-300;
+}
+
+/* تحسين الصور */
+img {
+  @apply max-w-full h-auto;
+}
+
+/* Container مخصص */
+.container-custom {
+  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+/* Section Spacing */
+.section-spacing {
+  @apply py-16 md:py-24;
+}
