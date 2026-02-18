@@ -15,6 +15,13 @@ export interface Product {
     base?: string[];
   };
   inStock: boolean;
+  // حقول جديدة للوحة التحكم
+  quantity: number;
+  discount: number;
+  isDiscountActive: boolean;
+  finalPrice: number;
+  createdAt: string;
+  updatedAt: string;
 }
 
 export interface Category {
