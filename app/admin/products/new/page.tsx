@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useProducts } from '@/hooks/useProducts';
 import { useRouter } from 'next/navigation';
 import ProductForm from '@/components/admin/ProductForm';
+import ErrorToast from '@/components/admin/ErrorToast';
 import { Product } from '@/types/product';
 import { Check } from 'lucide-react';
 
@@ -12,9 +13,11 @@ export default function NewProductPage() {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const handleSubmit = (data: Omit<Product, 'id' | 'createdAt' | 'updatedAt' | 'finalPrice'>) => {
     setIsLoading(true);
+    setError(null);
 
     try {
       addProduct(data);
@@ -28,7 +31,7 @@ export default function NewProductPage() {
       }, 2000);
     } catch (error) {
       console.error('Error adding product:', error);
-      alert('حدث خطأ أثناء إضافة العطر. الرجاء المحاولة مرة أخرى.');
+      setError('حدث خطأ أثناء إضافة العطر. الرجاء المحاولة مرة أخرى.');
       setIsLoading(false);
     }
   };
@@ -53,6 +56,9 @@ export default function NewProductPage() {
           </div>
         </div>
       )}
+
+      {/* رسالة الخطأ */}
+      {error && <ErrorToast message={error} onClose={() => setError(null)} />}
 
       {/* العنوان */}
       <div className="mb-8">

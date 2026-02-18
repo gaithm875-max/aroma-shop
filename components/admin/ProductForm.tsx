@@ -49,6 +49,14 @@ export default function ProductForm({
 
   // State للأخطاء
   const [errors, setErrors] = useState<Record<string, string>>({});
+  
+  // State لحالة تحميل الصورة
+  const [imageError, setImageError] = useState(false);
+
+  // إعادة تعيين حالة الخطأ عند تغيير رابط الصورة
+  useEffect(() => {
+    setImageError(false);
+  }, [formData.image]);
 
   // حساب السعر النهائي
   const finalPrice = formData.isDiscountActive && formData.discount > 0
@@ -532,23 +540,20 @@ export default function ProductForm({
             <div className="border-2 border-dashed border-gray-300 rounded-lg p-4">
               <p className="text-sm font-semibold text-gray-700 mb-3">معاينة:</p>
               <div className="relative w-full h-64 bg-gray-100 rounded-lg overflow-hidden">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={formData.image}
-                  alt="معاينة"
-                  className="w-full h-full object-cover"
-                  onError={(e) => {
-                    e.currentTarget.style.display = 'none';
-                    e.currentTarget.parentElement!.innerHTML = `
-                      <div class="flex flex-col items-center justify-center h-full text-gray-400">
-                        <svg class="w-16 h-16 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                        </svg>
-                        <p>فشل تحميل الصورة</p>
-                      </div>
-                    `;
-                  }}
-                />
+                {!imageError ? (
+                  /* eslint-disable-next-line @next/next/no-img-element */
+                  <img
+                    src={formData.image}
+                    alt="معاينة"
+                    className="w-full h-full object-cover"
+                    onError={() => setImageError(true)}
+                  />
+                ) : (
+                  <div className="flex flex-col items-center justify-center h-full text-gray-400">
+                    <ImageIcon className="w-16 h-16 mb-2" />
+                    <p>فشل تحميل الصورة</p>
+                  </div>
+                )}
               </div>
             </div>
           )}

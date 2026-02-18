@@ -5,6 +5,7 @@ import { useProducts } from '@/hooks/useProducts';
 import { useRouter } from 'next/navigation';
 import { notFound } from 'next/navigation';
 import ProductForm from '@/components/admin/ProductForm';
+import ErrorToast from '@/components/admin/ErrorToast';
 import { Product } from '@/types/product';
 import { Check } from 'lucide-react';
 
@@ -14,6 +15,7 @@ export default function EditProductPage({ params }: { params: Promise<{ id: stri
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const [product, setProduct] = useState<Product | undefined>(undefined);
   const [mounted, setMounted] = useState(false);
 
@@ -40,6 +42,7 @@ export default function EditProductPage({ params }: { params: Promise<{ id: stri
 
   const handleSubmit = (data: Omit<Product, 'id' | 'createdAt' | 'updatedAt' | 'finalPrice'>) => {
     setIsLoading(true);
+    setError(null);
 
     try {
       updateProduct(resolvedParams.id, data);
@@ -53,7 +56,7 @@ export default function EditProductPage({ params }: { params: Promise<{ id: stri
       }, 2000);
     } catch (error) {
       console.error('Error updating product:', error);
-      alert('حدث خطأ أثناء تحديث العطر. الرجاء المحاولة مرة أخرى.');
+      setError('حدث خطأ أثناء تحديث العطر. الرجاء المحاولة مرة أخرى.');
       setIsLoading(false);
     }
   };
@@ -78,6 +81,9 @@ export default function EditProductPage({ params }: { params: Promise<{ id: stri
           </div>
         </div>
       )}
+
+      {/* رسالة الخطأ */}
+      {error && <ErrorToast message={error} onClose={() => setError(null)} />}
 
       {/* العنوان */}
       <div className="mb-8">

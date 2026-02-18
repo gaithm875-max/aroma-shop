@@ -64,7 +64,7 @@ export function ProductProvider({ children }: { children: ReactNode }) {
   // إضافة منتج جديد
   const addProduct = (productData: Omit<Product, 'id' | 'createdAt' | 'updatedAt' | 'finalPrice'>) => {
     const now = new Date().toISOString();
-    const newId = (Math.max(...products.map(p => parseInt(p.id)), 0) + 1).toString();
+    const newId = (Math.max(0, ...products.map(p => parseInt(p.id))) + 1).toString();
     
     const finalPrice = calculateFinalPrice(
       productData.price,
