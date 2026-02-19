@@ -1,5 +1,7 @@
 import type { Metadata } from 'next'
 import './globals.css'
+import { CartProvider } from '@/contexts/CartContext'
+import { WishlistProvider } from '@/contexts/WishlistContext'
 
 export const metadata: Metadata = {
   title: 'Aroma Shop - متجر العطور الفاخرة | Luxury Perfume Shop',
@@ -31,7 +33,11 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
       </head>
       <body className="antialiased">
-        {children}
+        <CartProvider>
+          <WishlistProvider>
+            {children}
+          </WishlistProvider>
+        </CartProvider>
       </body>
     </html>
   )

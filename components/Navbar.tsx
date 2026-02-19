@@ -2,10 +2,15 @@
 
 import { useState, useEffect } from 'react';
 import { Menu, X, ShoppingCart, Search, User, Heart } from 'lucide-react';
+import { useCart } from '@/contexts/CartContext';
+import { useRouter } from 'next/navigation';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const { getCartCount } = useCart();
+  const router = useRouter();
+  const cartCount = getCartCount();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -34,8 +39,16 @@ const Navbar = () => {
         <div className="flex items-center justify-between h-20">
           {/* الأيقونات على اليسار */}
           <div className="flex items-center gap-4">
-            <button className="p-2 hover:bg-cream rounded-full transition-luxury">
+            <button
+              onClick={() => router.push('/cart')}
+              className="relative p-2 hover:bg-cream rounded-full transition-luxury"
+            >
               <ShoppingCart className="w-6 h-6 text-gold" />
+              {cartCount > 0 && (
+                <span className="absolute -top-1 -right-1 bg-gold text-white text-xs rounded-full w-5 h-5 flex items-center justify-center font-bold">
+                  {cartCount}
+                </span>
+              )}
             </button>
             <button className="p-2 hover:bg-cream rounded-full transition-luxury">
               <Search className="w-6 h-6 text-gold" />

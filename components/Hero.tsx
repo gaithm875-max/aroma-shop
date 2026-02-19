@@ -1,6 +1,12 @@
+'use client';
+
 import { ArrowLeft, Sparkles } from 'lucide-react';
 
 const Hero = () => {
+  const scrollToShop = () => {
+    document.querySelector('#shop')?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
     <section
       id="home"
@@ -42,11 +48,11 @@ const Hero = () => {
 
         {/* الأزرار */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center fade-in">
-          <button className="btn-primary flex items-center gap-2">
+          <button onClick={scrollToShop} className="btn-primary flex items-center gap-2">
             استكشف المجموعة
             <ArrowLeft className="w-5 h-5" />
           </button>
-          <button className="btn-secondary">
+          <button onClick={scrollToShop} className="btn-secondary">
             تواصل معنا
           </button>
         </div>
