@@ -1,0 +1,729 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>ريحة - عطور تخلّي اللحظة تعيش أكثر</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="ريحة - براند عطور عربي يجمع بين الفخامة والبساطة. عطور ثابتة، روائح مميّزة، وتغليف أنيق.">
+    <style>
+        /* إعدادات عامة */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background-color: #111111;
+            color: #f5f0e8;
+            line-height: 1.7;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        /* حاوية أساسية */
+        .container {
+            width: 100%;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 16px;
+        }
+
+        /* الهيدر */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(17, 17, 17, 0.95);
+            border-bottom: 1px solid rgba(201, 163, 107, 0.2);
+            backdrop-filter: blur(8px);
+        }
+
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 0;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        .logo span {
+            color: #c9a36b;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+            font-size: 14px;
+        }
+
+        nav a {
+            padding-bottom: 4px;
+            border-bottom: 1px solid transparent;
+        }
+
+        nav a:hover {
+            border-color: #c9a36b;
+        }
+
+        /* بطل الصفحة (Hero) */
+        .hero {
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            padding: 40px 0 60px;
+        }
+
+        .hero-inner {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .hero-text {
+            flex: 1 1 320px;
+        }
+
+        .hero-title {
+            font-size: 42px;
+            margin-bottom: 12px;
+        }
+
+        .hero-subtitle {
+            font-size: 18px;
+            color: #d8d0c2;
+            margin-bottom: 24px;
+        }
+
+        .hero-note {
+            font-size: 14px;
+            color: #b0a898;
+            margin-bottom: 24px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 18px;
+            border-radius: 100px;
+            font-size: 14px;
+            border: 1px solid transparent;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #c9a36b, #e0c28c);
+            color: #111111;
+            font-weight: 600;
+        }
+
+        .btn-primary:hover {
+            filter: brightness(1.05);
+        }
+
+        .btn-ghost {
+            border-color: #c9a36b;
+            color: #f5f0e8;
+        }
+
+        .btn-ghost:hover {
+            background-color: rgba(201, 163, 107, 0.08);
+        }
+
+        .hero-image {
+            flex: 1 1 260px;
+            min-height: 260px;
+            border-radius: 16px;
+            border: 1px solid rgba(201, 163, 107, 0.3);
+            background: radial-gradient(circle at top, #2a2723, #111111);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-bottle {
+            width: 160px;
+            height: 260px;
+            border-radius: 26px;
+            border: 1px solid rgba(245, 240, 232, 0.18);
+            background: linear-gradient(160deg, #f5f0e8 0%, #c9a36b 55%, #5b4a32 100%);
+            position: relative;
+        }
+
+        .hero-bottle::after {
+            content: "R";
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 80px;
+            font-weight: 700;
+            color: rgba(17, 17, 17, 0.15);
+        }
+
+        .hero-tag {
+            position: absolute;
+            bottom: 16px;
+            left: 16px;
+            font-size: 12px;
+            color: #d8d0c2;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 6px 10px;
+            border-radius: 20px;
+            border: 1px solid rgba(201, 163, 107, 0.7);
+        }
+
+        /* الأقسام العامة */
+        section {
+            padding: 50px 0;
+        }
+
+        section:nth-of-type(even) {
+            background-color: #151515;
+        }
+
+        .section-title {
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+
+        .section-subtitle {
+            font-size: 14px;
+            color: #b0a898;
+            margin-bottom: 24px;
+        }
+
+        /* قسم "عن ريحة" */
+        .about-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+            gap: 24px;
+            align-items: start;
+        }
+
+        .about-box {
+            border-radius: 18px;
+            border: 1px solid rgba(201, 163, 107, 0.25);
+            padding: 18px;
+            background: radial-gradient(circle at top left, rgba(201, 163, 107, 0.16), transparent 60%);
+        }
+
+        .about-list {
+            list-style: none;
+            display: grid;
+            gap: 10px;
+            font-size: 14px;
+        }
+
+        .about-list li::before {
+            content: "• ";
+            color: #c9a36b;
+        }
+
+        /* قسم العطور */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .product-card {
+            border-radius: 16px;
+            border: 1px solid rgba(201, 163, 107, 0.25);
+            padding: 16px;
+            background: linear-gradient(150deg, rgba(255,255,255,0.02), rgba(201, 163, 107, 0.05));
+        }
+
+        .product-name {
+            font-size: 18px;
+            margin-bottom: 4px;
+        }
+
+        .product-tag {
+            font-size: 12px;
+            color: #c9a36b;
+            margin-bottom: 8px;
+        }
+
+        .product-desc {
+            font-size: 13px;
+            color: #d8d0c2;
+            margin-bottom: 10px;
+        }
+
+        .product-meta {
+            font-size: 13px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            color: #e5ddcf;
+        }
+
+        .product-meta span.price {
+            font-weight: 600;
+            color: #e6cfa0;
+        }
+
+        /* قسم "ليش ريحة؟" */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+            gap: 16px;
+        }
+
+        .feature-card {
+            border-radius: 14px;
+            border: 1px solid rgba(201, 163, 107, 0.25);
+            padding: 14px;
+            font-size: 14px;
+            background-color: rgba(0,0,0,0.2);
+        }
+
+        .feature-title {
+            font-weight: 600;
+            margin-bottom: 4px;
+            color: #e6cfa0;
+        }
+
+        /* قسم طريقة الطلب */
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+            gap: 16px;
+            font-size: 14px;
+        }
+
+        .step {
+            border-radius: 14px;
+            border: 1px solid rgba(201, 163, 107, 0.25);
+            padding: 14px;
+            background-color: rgba(0,0,0,0.2);
+            position: relative;
+            padding-right: 36px;
+        }
+
+        .step-number {
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            border: 1px solid #c9a36b;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            color: #c9a36b;
+        }
+
+        /* قسم آراء العملاء */
+        .testimonials {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 16px;
+            font-size: 14px;
+        }
+
+        .testimonial {
+            border-radius: 14px;
+            border: 1px solid rgba(201, 163, 107, 0.25);
+            padding: 14px;
+            background-color: rgba(0,0,0,0.2);
+        }
+
+        .testimonial-name {
+            font-weight: 600;
+            margin-top: 6px;
+            color: #e6cfa0;
+            font-size: 13px;
+        }
+
+        /* قسم التواصل */
+        .contact-box {
+            border-radius: 18px;
+            border: 1px solid rgba(201, 163, 107, 0.4);
+            padding: 20px;
+            background: radial-gradient(circle at top right, rgba(201, 163, 107, 0.2), transparent 60%);
+        }
+
+        .contact-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-top: 12px;
+            font-size: 14px;
+        }
+
+        .contact-item span {
+            display: block;
+            font-size: 12px;
+            color: #b0a898;
+            margin-bottom: 2px;
+        }
+
+        footer {
+            padding: 16px 0 24px;
+            font-size: 12px;
+            color: #8f8577;
+            text-align: center;
+        }
+
+        footer a {
+            color: #c9a36b;
+        }
+
+        /* استجابة للموبايل */
+        @media (max-width: 768px) {
+            .hero {
+                min-height: auto;
+                padding-top: 24px;
+            }
+
+            .hero-title {
+                font-size: 32px;
+            }
+
+            nav ul {
+                display: none; /* تبسيط الهيدر للموبايل كبداية */
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container header-inner">
+        <div class="logo">
+            ريحة<span>.</span>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#about">عن ريحة</a></li>
+                <li><a href="#products">العطور</a></li>
+                <li><a href="#why">ليش ريحة؟</a></li>
+                <li><a href="#how">طريقة الطلب</a></li>
+                <li><a href="#contact">تواصل</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<main>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container hero-inner">
+            <div class="hero-text">
+                <div class="hero-title">ريحة… لكل لحظة حكاية.</div>
+                <div class="hero-subtitle">
+                    براند عطور عربي يجمع بين فخامة النوتات العالمية ودفء الروح الشرقية.
+                    تركيبات ثابتة، روائح مميّزة، وتغليف يليق فيك.
+                </div>
+                <div class="hero-note">
+                    ابدأ بمجموعة "ريحة الأساسيات" – ٣ عطور مختارة تعيش معك من الصباح للمساء.
+                </div>
+                <div class="hero-buttons">
+                    <a href="#products" class="btn btn-primary">تصفح العطور</a>
+                    <a href="https://wa.me/XXXXXXXXXXX" class="btn btn-ghost" target="_blank">اطلب مباشرة على واتساب</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="hero-bottle"></div>
+                <div class="hero-tag">
+                    براند: ريحة · تصميم بسيط · فخامة يومية
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- عن ريحة -->
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">عن ريحة</h2>
+            <p class="section-subtitle">
+                بدأنا من فكرة بسيطة: كل ريحة تحمل ذكرى. مهمتنا نصنع عطور تخليك تترك بصمتك، بدون ما تحتاج تدفع مبالغ خيالية.
+            </p>
+            <div class="about-grid">
+                <div class="about-box">
+                    <p style="margin-bottom: 10px;">
+                        في ريحة نركّز على:
+                    </p>
+                    <ul class="about-list">
+                        <li>زيوت عطرية مختارة بعناية، بثبات عالي على البشرة والملابس.</li>
+                        <li>روائح تناسب الاستخدام اليومي والمناسبات، للشباب والبنات.</li>
+                        <li>تغليف أنيق وبسيط، مناسب كهدية أو استخدام شخصي.</li>
+                        <li>تجربة شراء سهلة عبر واتساب وإنستغرام، مع دعم شخصي في اختيار العطر.</li>
+                    </ul>
+                </div>
+                <div class="about-box">
+                    <p style="font-size: 14px; margin-bottom: 8px;">
+                        نعمل حاليًا بنظام الطلب المسبق والقطع المحدودة، حتى نحافظ على جودة كل دفعة ونسمع رأي كل عميل.
+                    </p>
+                    <p style="font-size: 14px;">
+                        هدفنا على المدى القريب:
+                        إطلاق مجموعات موسمية ثابتة (صيفية/شتوية)،
+                        وتوفير خيارات أحجام مختلفة تناسب ميزانيتك.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- العطور -->
+    <section id="products">
+        <div class="container">
+            <h2 class="section-title">مجموعة ريحة الأساسية</h2>
+            <p class="section-subtitle">
+                ثلاث عطور مختارة بعناية، تغطي كل أوقاتك: الصباح، العمل، الخروج، والليل.
+                يمكنك البدء بأي واحد، أو أخذ المجموعة كاملة بسعر مخفّض.
+            </p>
+
+            <div class="products-grid">
+                <!-- عطر 1 -->
+                <div class="product-card">
+                    <div class="product-name">ريحة الصباح</div>
+                    <div class="product-tag">منعش · حمضيات خفيفة · للجنسين</div>
+                    <div class="product-desc">
+                        افتتاحية حمضيات ناعمة مع لمسة فل وبرغموت، تعطيك إحساس بالانتعاش والنظافة.
+                        مناسب للدوام، الجامعة، والاستخدام اليومي.
+                    </div>
+                    <div class="product-meta">
+                        <span>50 مل · تركيز Eau de Parfum</span>
+                        <span class="price">السعر: XX ر.س / دينار</span>
+                    </div>
+                    <a class="btn btn-ghost"
+                       href="https://wa.me/XXXXXXXXXXX?text=أرغب%20بطلب%20عطر%20%22ريحة%20الصباح%22"
+                       target="_blank">
+                        اطلب "ريحة الصباح"
+                    </a>
+                </div>
+
+                <!-- عطر 2 -->
+                <div class="product-card">
+                    <div class="product-name">ريحة المطر</div>
+                    <div class="product-tag">نظيف · مائي · هادي</div>
+                    <div class="product-desc">
+                        ريحة قريبة من إحساس أول المطر على الأرض، مزيج ناعم من النوتات المائية والزهور البيضاء.
+                        أنيق وبسيط، يحبه اللي يدور على عطر "مرتب" بدون ما يكون مزعج.
+                    </div>
+                    <div class="product-meta">
+                        <span>50 مل · تركيز Eau de Parfum</span>
+                        <span class="price">السعر: XX ر.س / دينار</span>
+                    </div>
+                    <a class="btn btn-ghost"
+                       href="https://wa.me/XXXXXXXXXXX?text=أرغب%20بطلب%20عطر%20%22ريحة%20المطر%22"
+                       target="_blank">
+                        اطلب "ريحة المطر"
+                    </a>
+                </div>
+
+                <!-- عطر 3 -->
+                <div class="product-card">
+                    <div class="product-name">ريحة الليل</div>
+                    <div class="product-tag">شرقي · عود خفيف · لمناسبات خاصة</div>
+                    <div class="product-desc">
+                        قلب شرقي دافئ بنفحات عود وفانيلا وعنبر، مصمم للسهرة والمناسبات.
+                        يترك أثر واضح بدون ما يكون ثقيل زيادة عن اللزوم.
+                    </div>
+                    <div class="product-meta">
+                        <span>50 مل · تركيز Eau de Parfum</span>
+                        <span class="price">السعر: XX ر.س / دينار</span>
+                    </div>
+                    <a class="btn btn-ghost"
+                       href="https://wa.me/XXXXXXXXXXX?text=أرغب%20بطلب%20عطر%20%22ريحة%20الليل%22"
+                       target="_blank">
+                        اطلب "ريحة الليل"
+                    </a>
+                </div>
+            </div>
+
+            <p style="font-size: 13px; color: #b0a898; margin-top: 16px;">
+                ملاحظة: يمكن تعديل أسماء العطور، الوصف والأسعار لاحقًا حسب العطور الفعلية اللي توفرها.
+            </p>
+        </div>
+    </section>
+
+    <!-- ليش ريحة؟ -->
+    <section id="why">
+        <div class="container">
+            <h2 class="section-title">ليش تختار ريحة؟</h2>
+            <p class="section-subtitle">
+                السوق مليان عطور، بس إحنا مركزين على تفاصيل تخلي التجربة مختلفة.
+            </p>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-title">ثبات وأداء مدروس</div>
+                    <p>
+                        نجرّب التركيبة على البشرة والملابس قبل أي إطلاق، ونتأكد إن العطر يعطيك حضور من ٦–٨ ساعات (تقريبي).
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-title">توازن بين الفخامة والسعر</div>
+                    <p>
+                        نستخدم مكونات بجودة ممتازة، بدون مبالغة في التغليف أو التسويق، عشان تدفع على العطر نفسه، مو على الشكليات.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-title">روائح عملية ومحبوبة</div>
+                    <p>
+                        نختار نوتات قريبة من أذواق الناس لكن بلمسة خاصة، تناسب كل يوم، مو بس للمناسبات الكبيرة.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-title">تجربة شخصية</div>
+                    <p>
+                        تقدر تراسلنا وتوصف ذوقك بالعطور، ونرشح لك الأنسب من مجموعة ريحة، ونوضح لك متى وكيف تستخدم كل عطر.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- طريقة الطلب -->
+    <section id="how">
+        <div class="container">
+            <h2 class="section-title">طريقة الطلب</h2>
+            <p class="section-subtitle">
+                عملية بسيطة وسريعة، تتم بالكامل عبر واتساب أو إنستغرام.
+            </p>
+
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <strong>اختَر عطرك المفضل</strong>
+                    <p>
+                        تصفح العطور في الأعلى، واختر الريحة اللي تناسب استخدامك (صباح، دوام، سهرات…).
+                    </p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <strong>تواصل معنا</strong>
+                    <p>
+                        أرسل رسالة على واتساب أو إنستغرام باسم العطر، وعدد القطع، ومدينة التوصيل.
+                        نرد عليك بتأكيد السعر ووقت التوصيل.
+                    </p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <strong>تأكيد الطلب واستلامه</strong>
+                    <p>
+                        بعد التأكيد، نرسل لك تفاصيل الدفع والتسليم (توصيل منزلي / نقطة استلام) حسب مدينتك.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- آراء العملاء -->
+    <section>
+        <div class="container">
+            <h2 class="section-title">آراء من جرّبوا ريحة</h2>
+            <p class="section-subtitle">
+                بعض الانطباعات بعد أول دفعات تجريبية من عطور ريحة.
+                يمكنك لاحقًا استبدال النصوص بآراء حقيقية من عملائك.
+            </p>
+
+            <div class="testimonials">
+                <div class="testimonial">
+                    "ريحة الصباح صار عطر الدوام الرسمي عندي، خفيف بس يلفت الانتباه، وكثير سألوني عنه."
+                    <div class="testimonial-name">عميل من أول الدفعة</div>
+                </div>
+                <div class="testimonial">
+                    "ريحة الليل فاجأني، إحساس شرقي ناعم، مو ثقيل، مناسب جدًا للجمعات والمناسبات."
+                    <div class="testimonial-name">عميل جرّب أكثر من عطر</div>
+                </div>
+                <div class="testimonial">
+                    "التغليف بسيط وأنيق، حسيته جاهز كهدية بدون ما أضيف أي شيء."
+                    <div class="testimonial-name">عميلة اشترت كهدية</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- تواصل -->
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">تواصل واطلب الآن</h2>
+            <p class="section-subtitle">
+                جاهزين نساعدك تختار ريحتك المفضلة، أو نجهز لك هدية مميزة لشخص تحبه.
+            </p>
+
+            <div class="contact-box">
+                <p>
+                    راسلنا مباشرة، واذكر اسم العطر أو وصف الريحة اللي تحبها،
+                    ونقترح لك الأنسب من مجموعة "ريحة".
+                </p>
+
+                <div class="contact-row">
+                    <div class="contact-item">
+                        <span>واتساب</span>
+                        <a href="https://wa.me/XXXXXXXXXXX" target="_blank" class="btn btn-primary">
+                            محادثة واتساب
+                        </a>
+                    </div>
+                    <div class="contact-item">
+                        <span>إنستغرام</span>
+                        <a href="https://instagram.com/your_instagram_here" target="_blank" class="btn btn-ghost">
+                            @your_instagram_here
+                        </a>
+                    </div>
+                </div>
+
+                <p style="font-size: 13px; color: #b0a898; margin-top: 14px;">
+                    يمكنك إضافة: رقم جوال، إيميل، أو موقع المتجر الفعلي (إن وجد) في هذا القسم.
+                </p>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<footer>
+    <div class="container">
+        © <span id="year"></span> ريحة. كل الحقوق محفوظة.
+        <br>
+        صُممت الصفحة كبداية بسيطة لمشروعك، ويمكن تطويرها لاحقًا لمتجر إلكتروني متكامل.
+    </div>
+</footer>
+
+<script>
+    // تحديث سنة الحقوق تلقائيًا
+    document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>AROMA | التقييمات والآراء</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --rose-gold: #c38b6c;
+            --rose-gold-light: #e6c8b8;
+            --rose-gold-dark: #8e5f4a;
+            --gold: #d2b07b;
+            --dark-bg: #0f0b0c;
+            --darker-bg: #0a0708;
+            --card-bg: rgba(255, 255, 255, 0.02);
+            --border: rgba(195, 139, 108, 0.25);
+            --accent-purple: #7a6075;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        a { text-decoration: none; color: inherit; }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: var(--dark-bg);
+            color: #cfc6bf;
+            padding: 90px 20px 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* ==================== الهيدر ==================== */
+        header {
+            padding: 15px 0;
+            background: rgba(5, 5, 5, 0.95);
+            backdrop-filter: blur(20px);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            width: 100%;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border);
+            transition: all 0.3s ease;
+            animation: slideDown 0.6s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 25px;
+            gap: 25px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-shrink: 0;
+            position: relative;
+        }
+
+        .logo::before {
+            content: '';
+            position: absolute;
+            left: -10px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 2px;
+            height: 35px;
+            background: linear-gradient(180deg, transparent, var(--rose-gold), transparent);
+            opacity: 0.5;
+        }
+
+        .logo::after {
+            content: '';
+            position: absolute;
+            right: -10px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 2px;
+            height: 35px;
+            background: linear-gradient(180deg, transparent, var(--rose-gold), transparent);
+            opacity: 0.5;
+        }
+
+        .logo-symbol {
+            width: 50px;
+            height: 50px;
+            border: 2px solid var(--rose-gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--rose-gold);
+            position: relative;
+            background: radial-gradient(circle at center, rgba(195, 139, 108, 0.1), transparent);
+            box-shadow:
+                0 0 20px rgba(195, 139, 108, 0.3),
+                inset 0 0 15px rgba(195, 139, 108, 0.1);
+        }
+
+        .logo-symbol::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border: 1.5px solid var(--rose-gold);
+            transform: rotate(45deg);
+            opacity: 0.4;
+        }
+
+        .logo-symbol::after {
+            content: '';
+            position: absolute;
+            top: -6px;
+            right: -6px;
+            width: 10px;
+            height: 10px;
+            background: linear-gradient(135deg, var(--rose-gold), var(--rose-gold-light));
+            transform: rotate(45deg);
+            opacity: 0.7;
+            animation: sparkle 3s ease infinite;
+            border-radius: 2px;
+            box-shadow: 0 0 12px rgba(195, 139, 108, 0.4);
+        }
+
+        @keyframes sparkle {
+            0%, 100% {
+                opacity: 0.7;
+                transform: scale(1) rotate(45deg);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.2) rotate(225deg);
+            }
+        }
+
+        .logo-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            letter-spacing: 6px;
+            color: transparent;
+            font-weight: 700;
+            text-transform: uppercase;
+            background: linear-gradient(135deg, #fff, var(--rose-gold), var(--rose-gold-light), #fff);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
+            text-shadow: 0 0 30px rgba(195, 139, 108, 0.5);
+            animation: shimmerText 4s ease infinite;
+        }
+
+        @keyframes shimmerText {
+            0%, 100% { background-position: 0% center; }
+            50% { background-position: 100% center; }
+        }
+
+        .logo-text::after {
+            content: 'عطور فاخرة';
+            position: absolute;
+            bottom: -12px;
+            left: 0;
+            right: 0;
+            font-size: 7px;
+            letter-spacing: 3px;
+            color: var(--rose-gold);
+            opacity: 0.6;
+            font-weight: 400;
+            text-align: center;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        nav a {
+            color: #999;
+            font-size: 13px;
+            letter-spacing: 1px;
+            font-weight: 500;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            padding-bottom: 5px;
+            border-bottom: 1px solid transparent;
+            position: relative;
+        }
+
+        nav a::before {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 50%;
+            width: 0;
+            height: 1px;
+            background: linear-gradient(90deg, var(--rose-gold), var(--rose-gold-light));
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            transform: translateX(-50%);
+        }
+
+        nav a:hover::before { width: 100%; }
+
+        nav a:hover {
+            color: var(--rose-gold);
+            transform: translateY(-2px);
+        }
+
+        /* صندوق البحث */
+        .header-search {
+            flex: 1;
+            max-width: 450px;
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 12px 45px 12px 20px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid var(--border);
+            border-radius: 50px;
+            color: #fff;
+            font-size: 14px;
+            font-family: 'Cairo', sans-serif;
+            outline: none;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .search-input:focus {
+            border-color: var(--rose-gold);
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 15px rgba(195, 139, 108, 0.15), 0 0 0 3px rgba(195, 139, 108, 0.08);
+            transform: translateY(-1px);
+        }
+
+        .search-input::placeholder { color: #666; }
+
+        .search-icon {
+            position: absolute;
+            left: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 16px;
+            color: var(--rose-gold);
+            pointer-events: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* أيقونات السلة والمفضلة */
+        .header-actions {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .header-icon {
+            position: relative;
+            width: 45px;
+            height: 45px;
+            border: 1.5px solid var(--border);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            background: rgba(255, 255, 255, 0.03);
+            font-size: 20px;
+        }
+
+        .header-icon:hover {
+            border-color: var(--rose-gold);
+            background: rgba(183, 110, 121, 0.15);
+            transform: translateY(-3px) scale(1.1);
+            box-shadow: 0 8px 25px rgba(183, 110, 121, 0.3);
+        }
+
+        .header-icon-badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: linear-gradient(135deg, #ff6b6b, #ff8c42);
+            color: #fff;
+            font-size: 10px;
+            font-weight: 700;
+            padding: 3px 7px;
+            border-radius: 12px;
+            min-width: 20px;
+            text-align: center;
+        }
+
+        .icon {
+            width: 18px;
+            height: 18px;
+            stroke: var(--rose-gold);
+            fill: none;
+            stroke-width: 1.6;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            flex-shrink: 0;
+        }
+
+        .icon-muted {
+            stroke: #777;
+        }
+
+        /* ==================== التقييمات ==================== */
+        .reviews-container {
+            display: grid;
+            grid-template-columns: 350px 1fr;
+            gap: 30px;
+        }
+
+        .reviews-stats {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 25px;
+            height: fit-content;
+        }
+
+        .overall-rating {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .rating-number {
+            font-size: 48px;
+            font-weight: bold;
+            color: var(--gold);
+        }
+
+        .rating-stars {
+            font-size: 28px;
+            margin: 10px 0;
+        }
+
+        .rating-out-of {
+            color: #999;
+            font-size: 14px;
+        }
+
+        .rating-distribution {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .rating-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .rating-label {
+            min-width: 40px;
+            color: #999;
+            font-size: 13px;
+        }
+
+        .rating-bar {
+            flex: 1;
+            height: 8px;
+            background: rgba(210, 176, 123, 0.2);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .rating-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--gold), #f1e0c6);
+            transition: width 0.3s ease;
+        }
+
+        .rating-count {
+            min-width: 30px;
+            text-align: right;
+            color: var(--gold);
+            font-size: 13px;
+        }
+
+        .reviews-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .review-item {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 20px;
+            transition: all 0.3s;
+        }
+
+        .review-item:hover {
+            border-color: var(--gold);
+            box-shadow: 0 8px 20px rgba(210, 176, 123, 0.1);
+        }
+
+        .review-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .reviewer-name {
+            color: var(--gold);
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .review-date {
+            color: #999;
+            font-size: 12px;
+        }
+
+        .review-rating {
+            font-size: 16px;
+            margin-bottom: 8px;
+            color: var(--gold);
+        }
+
+        .review-text {
+            color: #cfc6bf;
+            line-height: 1.6;
+            margin-bottom: 12px;
+        }
+
+        .review-actions {
+            display: flex;
+            gap: 15px;
+        }
+
+        .review-action-btn {
+            padding: 6px 12px;
+            background: rgba(210, 176, 123, 0.1);
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+            color: #cfc6bf;
+            transition: all 0.3s;
+        }
+
+        .review-action-btn:hover {
+            background: rgba(210, 176, 123, 0.2);
+            border-color: var(--gold);
+        }
+
+        .no-reviews {
+            text-align: center;
+            padding: 60px 20px;
+            color: #999;
+            grid-column: 1 / -1;
+        }
+
+        .add-review-form {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--gold);
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .form-group select,
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            color: #cfc6bf;
+            font-family: 'Cairo', sans-serif;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+
+        .form-group select:focus,
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            background: rgba(255, 255, 255, 0.04);
+            border-color: var(--gold);
+            box-shadow: 0 0 10px rgba(210, 176, 123, 0.2);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .star-rating {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .star {
+            background: none;
+            border: none;
+            font-size: 32px;
+            cursor: pointer;
+            opacity: 0.3;
+            transition: all 0.3s;
+        }
+
+        .star:hover {
+            opacity: 0.7;
+            transform: scale(1.2);
+        }
+
+        .star.active {
+            opacity: 1;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, var(--gold), var(--rose-gold));
+            color: var(--dark-bg);
+            border: none;
+            border-radius: 6px;
+            font-family: 'Cairo', sans-serif;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(210, 176, 123, 0.3);
+        }
+
+        /* ==================== Footer ==================== */
+        footer {
+            background: rgba(5, 5, 5, 0.8);
+            border-top: 1px solid var(--border);
+            padding: 40px 30px;
+            margin-top: 80px;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+
+        .footer-section h3 {
+            color: var(--gold);
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+
+        .footer-section p {
+            color: #999;
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #999;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--gold);
+        }
+
+        .footer-links a.link-disabled {
+            color: #555;
+            cursor: not-allowed;
+        }
+
+        @media (max-width: 768px) {
+            .reviews-container {
+                grid-template-columns: 1fr;
+            }
+
+            header h1 {
+                font-size: 24px;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div style="display: flex; gap: 10px; margin-bottom: 30px;">
+            <a href="index.html.html" style="padding: 8px 15px; background: var(--card-bg); border: 1px solid var(--border); border-radius: 6px; color: #cfc6bf; text-decoration: none; font-size: 13px;">🏠 الرئيسية</a>
+        </div>
+
+        <header>
+            <h1>⭐ التقييمات والآراء</h1>
+        <header>
+            <div class="nav-container">
+                <a class="logo" href="index.html.html" aria-label="AROMA">
+                    <div class="logo-symbol">A</div>
+                    <div class="logo-text">AROMA</div>
+                </a>
+
+                <nav>
+                    <ul>
+                        <li><a href="index.html.html">الرئيسية</a></li>
+                        <li><a href="customer.html">المتجر</a></li>
+                        <li><a href="compare.html">التقييمات</a></li>
+                    </ul>
+                </nav>
+
+                <div class="header-search">
+                    <span class="search-icon" aria-hidden="true">
+                        <svg class="icon icon-muted" viewBox="0 0 24 24">
+                            <circle cx="11" cy="11" r="7"></circle>
+                            <line x1="16.65" y1="16.65" x2="21" y2="21"></line>
+                        </svg>
+                    </span>
+                    <input type="text" class="search-input" placeholder="ابحث عن عطر أو ماركة...">
+                </div>
+
+                <div class="header-actions">
+                    <a class="header-icon" href="customer.html" title="المفضلة">
+                        <span aria-hidden="true">
+                            <svg class="icon" viewBox="0 0 24 24">
+                                <path d="M20.8 7.5c0 4.4-8.8 10.5-8.8 10.5S3.2 11.9 3.2 7.5a4.7 4.7 0 0 1 8.8-2.2 4.7 4.7 0 0 1 8.8 2.2z"></path>
+                            </svg>
+                        </span>
+                        <span class="header-icon-badge">0</span>
+                    </a>
+                    <a class="header-icon" href="customer.html" title="السلة">
+                        <span aria-hidden="true">
+                            <svg class="icon" viewBox="0 0 24 24">
+                                <circle cx="9" cy="20" r="1.7"></circle>
+                                <circle cx="17" cy="20" r="1.7"></circle>
+                                <path d="M3 4h2l2.5 12h10.5l2-9H6.2"></path>
+                            </svg>
+                        </span>
+                        <span class="header-icon-badge">0</span>
+                    </a>
+                </div>
+            </div>
+        </header>
+            <h2 style="color: var(--gold); margin-bottom: 20px;">اكتب تقييمك</h2>
+            
+            <div class="form-group">
+                <label>اختر المنتج</label>
+                <select id="productSelect" required>
+                    <option value="">-- اختر منتج --</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>التقييم</label>
+                <div class="star-rating" id="starRating">
+                    <button type="button" class="star" onclick="setRating(1)">⭐</button>
+                    <button type="button" class="star" onclick="setRating(2)">⭐</button>
+                    <button type="button" class="star" onclick="setRating(3)">⭐</button>
+                    <button type="button" class="star" onclick="setRating(4)">⭐</button>
+                    <button type="button" class="star" onclick="setRating(5)">⭐</button>
+                </div>
+                <input type="hidden" id="ratingValue" value="0">
+            </div>
+
+            <div class="form-group">
+                <label>اسمك</label>
+                <input type="text" id="reviewerName" placeholder="أدخل اسمك" required>
+            </div>
+
+            <div class="form-group">
+                <label>بريدك الإلكتروني (اختياري)</label>
+                <input type="email" id="reviewerEmail" placeholder="example@email.com">
+            </div>
+
+            <div class="form-group">
+                <label>رأيك</label>
+                <textarea id="reviewText" placeholder="شارك رأيك في المنتج..." required></textarea>
+            </div>
+
+            <button type="button" class="submit-btn" onclick="submitReview()">✅ إرسال التقييم</button>
+        </div>
+
+        <div id="reviewsSection"></div>
+    </div>
+
+        <!-- الفوتر -->
+        <footer>
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>عن AROMA</h3>
+                    <p>متجر متخصص في أفخر العطور العربية والعالمية. نحن نقدم أفضل التشكيلات المختارة بعناية لأفضل الأسعار.</p>
+                </div>
+
+                <div class="footer-section">
+                    <h3>روابط سريعة</h3>
+                    <ul class="footer-links">
+                        <li><a href="javascript:void(0)" data-footer-link="about">من نحن</a></li>
+                        <li><a href="javascript:void(0)" data-footer-link="contact">تواصل معنا</a></li>
+                        <li><a href="javascript:void(0)" data-footer-link="shipping">سياسة الشحن</a></li>
+                        <li><a href="javascript:void(0)" data-footer-link="returns">سياسة الإرجاع</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>خدمة العملاء</h3>
+                    <ul class="footer-links">
+                        <li><a href="javascript:void(0)" data-footer-link="help">مركز المساعدة</a></li>
+                        <li><a href="javascript:void(0)" data-footer-link="track">تتبع الطلب</a></li>
+                        <li><a href="javascript:void(0)" data-footer-link="faq">الأسئلة الشائعة</a></li>
+                        <li><a href="javascript:void(0)" data-footer-link="privacy">سياسة الخصوصية</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h3>تابعنا</h3>
+                    <ul class="footer-links">
+                        <li><a href="javascript:void(0)" data-footer-link="instagram">Instagram 📷</a></li>
+                        <li><a href="javascript:void(0)" data-footer-link="facebook">Facebook 👍</a></li>
+                        <li><a href="javascript:void(0)" data-footer-link="twitter">Twitter 🐦</a></li>
+                        <li><a href="javascript:void(0)" data-footer-link="tiktok">TikTok 🎵</a></li>
+                    </ul>
+                </div>
+            </div>
+        </footer>
+
+    <script>
+            const defaultFooterLinks = {
+                about: 'https://example.com/about',
+                contact: 'https://example.com/contact',
+                shipping: 'https://example.com/shipping',
+                returns: 'https://example.com/returns',
+                help: 'https://example.com/help',
+                track: 'https://example.com/track',
+                faq: 'https://example.com/faq',
+                privacy: 'https://example.com/privacy',
+                instagram: 'https://www.instagram.com/accounts/login/',
+                facebook: 'https://www.facebook.com/login/',
+                twitter: 'https://twitter.com/login',
+                tiktok: 'https://www.tiktok.com/login'
+            };
+
+            function loadFooterLinks() {
+                return JSON.parse(localStorage.getItem('aroma_footer_links')) || defaultFooterLinks;
+            }
+
+            function applyFooterLinks() {
+                const links = loadFooterLinks();
+                document.querySelectorAll('[data-footer-link]').forEach(link => {
+                    const key = link.getAttribute('data-footer-link');
+                    const url = links[key];
+                    if (!link.dataset.footerBound) {
+                        link.addEventListener('click', (event) => {
+                            if (link.classList.contains('link-disabled')) {
+                                event.preventDefault();
+                                alert('الرابط غير مضاف بعد. يمكنك تحديثه من قسم الادارة.');
+                            }
+                        });
+                        link.dataset.footerBound = 'true';
+                    }
+                    if (url) {
+                        link.href = url;
+                        if (url.startsWith('http')) {
+                            link.target = '_blank';
+                            link.rel = 'noopener';
+                        } else {
+                            link.removeAttribute('target');
+                            link.removeAttribute('rel');
+                        }
+                        link.classList.remove('link-disabled');
+                        link.removeAttribute('aria-disabled');
+                    } else {
+                        link.href = 'javascript:void(0)';
+                        link.removeAttribute('target');
+                        link.removeAttribute('rel');
+                        link.classList.add('link-disabled');
+                        link.setAttribute('aria-disabled', 'true');
+                    }
+                });
+            }
+
+        let selectedRating = 0;
+        let allReviews = JSON.parse(localStorage.getItem('aroma_reviews')) || [];
+        let comparisonProducts = [];
+
+        // ==================== تحميل المنتجات ==================== //
+        function loadAllProducts() {
+            const reihaProducts = JSON.parse(localStorage.getItem('reihaProducts')) || [];
+            const brandProducts = JSON.parse(localStorage.getItem('brandProducts')) || [];
+            return [...reihaProducts, ...brandProducts];
+        }
+
+        // ==================== التقييمات ==================== //
+        function loadProductSelect() {
+            const products = loadAllProducts();
+            const select = document.getElementById('productSelect');
+            
+            select.innerHTML = '<option value="">-- اختر منتج --</option>';
+            products.forEach(p => {
+                select.innerHTML += `<option value="${p.id}|${p.brand}">${p.name} (${p.brand})</option>`;
+            });
+        }
+
+        function setRating(stars) {
+            selectedRating = stars;
+            document.getElementById('ratingValue').value = stars;
+            
+            document.querySelectorAll('#starRating .star').forEach((btn, i) => {
+                if (i < stars) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+            });
+        }
+
+        function submitReview() {
+            const productSelect = document.getElementById('productSelect').value;
+            const rating = selectedRating;
+            const name = document.getElementById('reviewerName').value;
+            const email = document.getElementById('reviewerEmail').value;
+            const text = document.getElementById('reviewText').value;
+
+            if (!productSelect || !rating || !name || !text) {
+                alert('الرجاء ملء جميع الحقول المطلوبة');
+                return;
+            }
+
+            const [productId, brand] = productSelect.split('|');
+            const products = loadAllProducts();
+            const product = products.find(p => p.id == productId && p.brand === brand);
+
+            const review = {
+                id: Date.now(),
+                productId,
+                productName: product.name,
+                brand,
+                rating,
+                reviewer: name,
+                email,
+                text,
+                date: new Date().toISOString(),
+                helpful: 0,
+                unhelpful: 0
+            };
+
+            allReviews.push(review);
+            localStorage.setItem('aroma_reviews', JSON.stringify(allReviews));
+
+            // إعادة تعيين النموذج
+            document.getElementById('productSelect').value = '';
+            document.getElementById('reviewerName').value = '';
+            document.getElementById('reviewerEmail').value = '';
+            document.getElementById('reviewText').value = '';
+            setRating(0);
+
+            alert('✅ شكراً على تقييمك!');
+            loadReviews();
+        }
+
+        function loadReviews() {
+            const reviewsSection = document.getElementById('reviewsSection');
+
+            if (allReviews.length === 0) {
+                reviewsSection.innerHTML = '<div class="no-reviews">لا توجد تقييمات حتى الآن 😔</div>';
+                return;
+            }
+
+            // حساب الإحصائيات
+            const avgRating = (allReviews.reduce((sum, r) => sum + r.rating, 0) / allReviews.length).toFixed(1);
+            const distribution = [0, 0, 0, 0, 0];
+            allReviews.forEach(r => distribution[r.rating - 1]++);
+
+            let html = '<div class="reviews-container"><div class="reviews-stats">';
+            html += `<div class="overall-rating">
+                <div class="rating-number">${avgRating}</div>
+                <div class="rating-stars">${'⭐'.repeat(Math.floor(avgRating))}</div>
+                <div class="rating-out-of">من ${allReviews.length} تقييم</div>
+            </div>`;
+
+            html += '<div class="rating-distribution">';
+            for (let i = 5; i >= 1; i--) {
+                const count = distribution[i - 1];
+                const percent = allReviews.length > 0 ? (count / allReviews.length * 100) : 0;
+                html += `
+                    <div class="rating-row">
+                        <span class="rating-label">${i} ⭐</span>
+                        <div class="rating-bar">
+                            <div class="rating-bar-fill" style="width: ${percent}%"></div>
+                        </div>
+                        <span class="rating-count">${count}</span>
+                    </div>
+                `;
+            }
+            html += '</div></div>';
+
+            html += '<div class="reviews-list">';
+            allReviews.slice().reverse().forEach(review => {
+                html += `
+                    <div class="review-item">
+                        <div class="review-header">
+                            <div>
+                                <div class="reviewer-name">${review.reviewer}</div>
+                                <div class="review-date">${new Date(review.date).toLocaleDateString('ar-SA')}</div>
+                            </div>
+                        </div>
+                        <div class="review-rating">${'⭐'.repeat(review.rating)}</div>
+                        <div style="color: var(--gold); font-size: 13px; margin-bottom: 10px;">${review.productName} (${review.brand})</div>
+                        <div class="review-text">${review.text}</div>
+                        <div class="review-actions">
+                            <span class="review-action-btn">👍 ${review.helpful}</span>
+                            <span class="review-action-btn">👎 ${review.unhelpful}</span>
+                        </div>
+                    </div>
+                `;
+            });
+            html += '</div></div>';
+
+            reviewsSection.innerHTML = html;
+        }
+
+        window.addEventListener('storage', (event) => {
+            if (event.key === 'aroma_footer_links') {
+                applyFooterLinks();
+            }
+        });
+
+        // التهيئة
+        document.addEventListener('DOMContentLoaded', () => {
+            applyFooterLinks();
+            loadProductSelect();
+            loadReviews();
+        });
+    </script>
+</body>
+</html>

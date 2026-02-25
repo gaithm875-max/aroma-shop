@@ -1,0 +1,2163 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>AROMA | متجرنا الفاخر للعطور</title>
+    <meta name="viewport" content="width=1024, initial-scale=1">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <meta name="description" content="AROMA - متجر عطور عربي فاخر مع مجموعة متميزة من أفخر العطور">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --rose-gold: #c38b6c;
+            --rose-gold-light: #e6c8b8;
+            --rose-gold-dark: #8e5f4a;
+            --gold: #d2b07b;
+            --gold-light: #f1e0c6;
+            --dark-bg: #0f0b0c;
+            --darker-bg: #0a0708;
+            --card-bg: rgba(255, 255, 255, 0.02);
+            --border: rgba(195, 139, 108, 0.25);
+            --border-light: rgba(195, 139, 108, 0.4);
+            --accent-blue: #6c7f9b;
+            --accent-purple: #7a6075;
+            --accent-silver: #c9c7c2;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: var(--dark-bg);
+            background-image: 
+                radial-gradient(ellipse at 0% 0%, rgba(195, 139, 108, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 100% 100%, rgba(108, 127, 155, 0.06) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 50%, rgba(122, 96, 117, 0.04) 0%, transparent 70%);
+            color: #cfc6bf;
+            line-height: 1.7;
+            overflow-x: hidden;
+            min-height: 100vh;
+            padding-top: 90px;
+        }
+
+        a { text-decoration: none; color: inherit; }
+
+        /* ==================== الهيدر ==================== */
+        header {
+            padding: 15px 0;
+            background: rgba(5, 5, 5, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            animation: slideDown 0.6s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 25px;
+            gap: 25px;
+        }
+
+        /* اللوجو */
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-shrink: 0;
+            position: relative;
+        }
+
+        .logo::before {
+            content: '';
+            position: absolute;
+            left: -10px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 2px;
+            height: 35px;
+            background: linear-gradient(180deg, transparent, var(--rose-gold), transparent);
+            opacity: 0.5;
+        }
+
+        .logo::after {
+            content: '';
+            position: absolute;
+            right: -10px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 2px;
+            height: 35px;
+            background: linear-gradient(180deg, transparent, var(--rose-gold), transparent);
+            opacity: 0.5;
+        }
+
+        .logo-symbol {
+            width: 50px;
+            height: 50px;
+            border: 2px solid var(--rose-gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--rose-gold);
+            position: relative;
+            background: radial-gradient(circle at center, rgba(195, 139, 108, 0.1), transparent);
+            box-shadow:
+                0 0 20px rgba(195, 139, 108, 0.3),
+                inset 0 0 15px rgba(195, 139, 108, 0.1);
+        }
+
+        .logo-symbol::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border: 1.5px solid var(--rose-gold);
+            transform: rotate(45deg);
+            opacity: 0.4;
+        }
+
+        .logo-symbol::after {
+            content: '';
+            position: absolute;
+            top: -6px;
+            right: -6px;
+            width: 10px;
+            height: 10px;
+            background: linear-gradient(135deg, var(--rose-gold), var(--rose-gold-light));
+            transform: rotate(45deg);
+            opacity: 0.7;
+            animation: sparkle 3s ease infinite;
+            border-radius: 2px;
+            box-shadow: 0 0 12px rgba(195, 139, 108, 0.4);
+        }
+
+        @keyframes sparkle {
+            0%, 100% {
+                opacity: 0.7;
+                transform: scale(1) rotate(45deg);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.2) rotate(225deg);
+            }
+        }
+
+        .logo-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            letter-spacing: 6px;
+            color: transparent;
+            font-weight: 700;
+            text-transform: uppercase;
+            background: linear-gradient(135deg, #fff, var(--rose-gold), var(--rose-gold-light), #fff);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            position: relative;
+            text-shadow: 0 0 30px rgba(195, 139, 108, 0.5);
+            animation: shimmerText 4s ease infinite;
+        }
+
+        @keyframes shimmerText {
+            0%, 100% { background-position: 0% center; }
+            50% { background-position: 100% center; }
+        }
+
+        .logo-text::after {
+            content: 'عطور فاخرة';
+            position: absolute;
+            bottom: -12px;
+            left: 0;
+            right: 0;
+            font-size: 7px;
+            letter-spacing: 3px;
+            color: var(--rose-gold);
+            opacity: 0.6;
+            font-weight: 400;
+            text-align: center;
+        }
+
+        /* صندوق البحث */
+        .header-search {
+            flex: 1;
+            max-width: 450px;
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 12px 45px 12px 20px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid var(--border);
+            border-radius: 50px;
+            color: #fff;
+            font-size: 14px;
+            font-family: 'Cairo', sans-serif;
+            outline: none;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .search-input:focus {
+            border-color: var(--rose-gold);
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 15px rgba(195, 139, 108, 0.15), 0 0 0 3px rgba(195, 139, 108, 0.08);
+            transform: translateY(-1px);
+        }
+
+        .search-input::placeholder { color: #666; }
+
+        .search-icon {
+            position: absolute;
+            left: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 16px;
+            color: var(--rose-gold);
+            pointer-events: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* المنيو */
+        nav ul {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        nav a {
+            color: #999;
+            font-size: 13px;
+            letter-spacing: 1px;
+            font-weight: 500;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            padding-bottom: 5px;
+            border-bottom: 1px solid transparent;
+            position: relative;
+        }
+
+        nav a::before {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 50%;
+            width: 0;
+            height: 1px;
+            background: linear-gradient(90deg, var(--rose-gold), var(--accent-purple));
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            transform: translateX(-50%);
+        }
+
+        nav a:hover::before { width: 100%; }
+
+        nav a:hover {
+            color: var(--rose-gold);
+            transform: translateY(-2px);
+        }
+
+        /* أيقونات السلة والمفضلة */
+        .header-actions {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .header-icon {
+            position: relative;
+            width: 45px;
+            height: 45px;
+            border: 1.5px solid var(--border);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            background: rgba(255, 255, 255, 0.03);
+            font-size: 20px;
+        }
+
+        .header-icon:hover {
+            border-color: var(--rose-gold);
+            background: rgba(183, 110, 121, 0.15);
+            transform: translateY(-3px) scale(1.1);
+            box-shadow: 0 8px 25px rgba(183, 110, 121, 0.3);
+        }
+
+        .header-icon-badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: linear-gradient(135deg, #ff6b6b, #ff8c42);
+            color: #fff;
+            font-size: 10px;
+            font-weight: 700;
+            padding: 3px 7px;
+            border-radius: 12px;
+            min-width: 20px;
+            text-align: center;
+        }
+
+        .icon {
+            width: 18px;
+            height: 18px;
+            stroke: var(--rose-gold);
+            fill: none;
+            stroke-width: 1.6;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            flex-shrink: 0;
+        }
+
+        .icon-muted {
+            stroke: #777;
+        }
+
+        .icon-light {
+            stroke: #fff;
+        }
+
+        .icon-btn {
+            margin-left: 8px;
+        }
+
+        /* ==================== الفلترة والترتيب ==================== */
+        .filter-section {
+            max-width: 1400px;
+            margin: 30px auto;
+            padding: 0 30px;
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .filter-wrapper {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn, .sort-select {
+            padding: 10px 20px;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            color: #cfc6bf;
+            border-radius: 8px;
+            cursor: pointer;
+            font-family: 'Cairo', sans-serif;
+            font-size: 14px;
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .filter-btn:hover, .sort-select:focus {
+            border-color: var(--gold);
+            background: rgba(210, 176, 123, 0.05);
+        }
+
+        .filter-btn.active {
+            background: var(--gold);
+            color: var(--dark-bg);
+            border-color: var(--gold);
+        }
+
+        /* ==================== المح الرئيسي ==================== */
+        .main-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+
+        /* ==================== شبكة المنتجات ==================== */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 28px;
+            margin: 50px 0;
+            animation: fadeIn 0.8s ease;
+        }
+
+        .brand-section {
+            margin-top: 70px;
+        }
+
+        .brand-section:first-child {
+            margin-top: 0;
+        }
+
+        .brand-separator {
+            margin: 70px 0 40px;
+            text-align: center;
+            position: relative;
+        }
+
+        .brand-separator-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 34px;
+            color: var(--rose-gold);
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            display: inline-block;
+            background: var(--dark-bg);
+            padding: 0 30px;
+            position: relative;
+            z-index: 2;
+            animation: fadeInScale 0.8s ease backwards;
+        }
+
+        .brand-separator::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent);
+            z-index: 1;
+        }
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .no-products {
+            text-align: center;
+            padding: 40px 0;
+            color: #888;
+        }
+
+        /* ==================== بطاقة العطر ==================== */
+        .perfume-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01));
+            border: 1px solid var(--border);
+            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-areas: "info media";
+            height: 100%;
+            animation: fadeInUp 0.6s ease forwards;
+            opacity: 0;
+        }
+
+        .perfume-card.hidden-card {
+            opacity: 0.4;
+        }
+
+        .perfume-card.hidden-card::after {
+            content: "مخفي عن الزبائن";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(255, 80, 80, 0.9);
+            color: #fff;
+            padding: 10px 25px;
+            border-radius: 25px;
+            font-size: 13px;
+            font-weight: 600;
+            z-index: 15;
+            letter-spacing: 1px;
+        }
+
+        .perfume-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(183, 110, 121, 0.06) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.6s ease;
+        }
+
+        .perfume-card:hover::before {
+            opacity: 1;
+            animation: rotate 20s linear infinite;
+        }
+
+        .perfume-card:hover {
+            transform: translateY(-12px) scale(1.02);
+            border-color: var(--rose-gold);
+            box-shadow: 0 30px 60px rgba(183, 110, 121, 0.2), 0 0 0 1px rgba(183, 110, 121, 0.15) inset;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(183, 110, 121, 0.03));
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .card-media {
+            grid-area: media;
+            position: relative;
+            border-left: 1px solid var(--border);
+        }
+
+        .perfume-image {
+            width: 100%;
+            height: 100%;
+            min-height: 360px;
+            background: linear-gradient(145deg, rgba(183, 110, 121, 0.12), rgba(139, 90, 142, 0.08));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .perfume-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.6s ease;
+            filter: brightness(0.95) contrast(1.05);
+        }
+
+        .perfume-card:hover .perfume-image img {
+            transform: scale(1.12) rotate(2deg);
+            filter: brightness(1.1) contrast(1.1);
+        }
+
+        .perfume-image.no-image {
+            background: radial-gradient(circle at center, rgba(183, 110, 121, 0.2), rgba(139, 90, 142, 0.1));
+        }
+
+        .perfume-image.no-image::after {
+            content: "AROMA";
+            font-family: 'Playfair Display', serif;
+            font-size: 50px;
+            color: rgba(183, 110, 121, 0.3);
+            letter-spacing: 10px;
+        }
+
+        .perfume-image .emoji {
+            font-size: 54px;
+            color: rgba(195, 139, 108, 0.7);
+            filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.2));
+        }
+
+        .brand-label {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            font-size: 11px;
+            background: linear-gradient(135deg, var(--rose-gold), var(--rose-gold-light));
+            color: #fff;
+            padding: 7px 14px;
+            letter-spacing: 1px;
+            font-weight: 700;
+            text-transform: uppercase;
+            z-index: 10;
+            box-shadow: 0 4px 12px rgba(183, 110, 121, 0.3);
+            max-width: 70%;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .perfume-card:hover .brand-label {
+            transform: scale(1.05) translateY(-2px);
+            box-shadow: 0 8px 20px rgba(183, 110, 121, 0.4);
+        }
+
+        .card-content {
+            grid-area: info;
+            padding: 24px 26px;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            gap: 12px;
+        }
+
+        .card-header {
+            margin-bottom: 0;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border);
+            flex-shrink: 0;
+            min-height: 72px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: linear-gradient(90deg, var(--rose-gold), var(--accent-purple));
+            transition: width 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .perfume-card:hover .card-header::after {
+            width: 100%;
+        }
+
+        .perfume-card h3 {
+            font-size: 26px;
+            margin-bottom: 6px;
+            color: #f0ecf6;
+            font-weight: 700;
+            letter-spacing: 1.2px;
+            font-family: 'Playfair Display', serif;
+            transition: all 0.3s ease;
+        }
+
+        .perfume-card:hover h3 {
+            color: var(--rose-gold);
+            transform: translateX(3px);
+            text-shadow: 0 0 10px rgba(183, 110, 121, 0.3);
+        }
+
+        .info-line {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            font-size: 12px;
+            color: #a09aaa;
+            letter-spacing: 0.6px;
+            text-transform: uppercase;
+        }
+
+        .info-pill {
+            padding: 6px 12px;
+            border-radius: 999px;
+            border: 1px solid var(--border);
+            background: rgba(255, 255, 255, 0.04);
+            color: #b7b1bf;
+        }
+
+        .info-dot {
+            width: 5px;
+            height: 5px;
+            background: var(--rose-gold);
+            border-radius: 50%;
+            opacity: 0.6;
+        }
+
+        .card-desc {
+            font-size: 14px;
+            color: #a29cad;
+            line-height: 1.8;
+            margin: 0;
+            max-height: 96px;
+            overflow-y: auto;
+            flex-shrink: 0;
+        }
+
+        .card-details {
+            display: grid;
+            gap: 6px;
+            margin: 0;
+            padding: 0;
+            border: none;
+            background: transparent;
+            flex-shrink: 0;
+        }
+
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 4px 0;
+            border-bottom: 1px dashed rgba(255, 255, 255, 0.06);
+            font-size: 13px;
+        }
+
+        .detail-row:last-child { border-bottom: none; }
+
+        .detail-label {
+            font-size: 11px;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 600;
+        }
+
+        .detail-value {
+            font-size: 13px;
+            color: var(--rose-gold);
+            font-weight: 600;
+        }
+
+        .price-tag {
+            font-size: 26px;
+            color: var(--rose-gold);
+            font-weight: 700;
+            text-align: center;
+            margin: 6px 0 0 0;
+            font-family: 'Playfair Display', serif;
+            letter-spacing: 2px;
+            flex-shrink: 0;
+            height: 42px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            text-shadow: 0 0 12px rgba(183, 110, 121, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .perfume-card:hover .price-tag {
+            transform: scale(1.05);
+            text-shadow: 0 0 18px rgba(183, 110, 121, 0.35);
+        }
+
+        .price-tag.has-discount {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .price-tag .old-price {
+            font-size: 12px;
+            color: #777;
+            text-decoration: line-through;
+            letter-spacing: 0.5px;
+        }
+
+        .price-tag .new-price {
+            font-size: 24px;
+            color: var(--rose-gold);
+            letter-spacing: 1px;
+        }
+
+        .price-tag .discount-badge {
+            font-size: 10px;
+            padding: 3px 10px;
+            border-radius: 15px;
+            background: linear-gradient(135deg, #ff6b6b, #ff8c42);
+            color: #fff;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-luxury {
+            display: inline-block;
+            padding: 15px 45px;
+            border: 1.5px solid var(--rose-gold);
+            color: var(--rose-gold);
+            background: transparent;
+            font-size: 14px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            text-decoration: none;
+            font-family: 'Cairo', sans-serif;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .btn-luxury::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--rose-gold), var(--rose-gold-light));
+            transition: left 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            z-index: -1;
+        }
+
+        .btn-luxury:hover::before {
+            left: 0;
+        }
+
+        .btn-luxury:hover {
+            color: #fff;
+            box-shadow: 0 0 25px rgba(183, 110, 121, 0.4), 0 10px 30px rgba(183, 110, 121, 0.25);
+            transform: translateY(-3px);
+            border-color: var(--rose-gold);
+        }
+
+        .btn-luxury.btn-whatsapp {
+            background: linear-gradient(135deg, var(--rose-gold-dark), var(--rose-gold) 55%, var(--accent-purple));
+            border-color: rgba(183, 110, 121, 0.8);
+            color: #fff;
+            letter-spacing: 1px;
+            text-transform: none;
+            font-family: 'Playfair Display', 'Cairo', sans-serif;
+            font-weight: 600;
+            font-size: 15px;
+            box-shadow: 0 12px 28px rgba(183, 110, 121, 0.35), inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-luxury.btn-whatsapp::before {
+            left: -120%;
+            background: linear-gradient(120deg, transparent 20%, rgba(255, 255, 255, 0.35), transparent 80%);
+        }
+
+        .btn-luxury.btn-whatsapp:hover::before {
+            left: 120%;
+        }
+
+        .btn-luxury.btn-whatsapp:hover {
+            color: #fff;
+            transform: translateY(-4px);
+            box-shadow: 0 18px 38px rgba(183, 110, 121, 0.45), 0 0 24px rgba(139, 90, 142, 0.25);
+        }
+
+        .btn-luxury.btn-whatsapp .icon-btn {
+            width: 20px;
+            height: 20px;
+            margin-inline-end: 8px;
+            filter: drop-shadow(0 2px 6px rgba(183, 110, 121, 0.35));
+        }
+
+        .card-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: auto;
+            padding-top: 12px;
+            border-top: 1px solid var(--border);
+            flex-shrink: 0;
+            position: relative;
+        }
+
+        .card-actions::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: linear-gradient(90deg, var(--rose-gold), var(--accent-purple));
+            transition: width 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) 0.1s;
+        }
+
+        .perfume-card:hover .card-actions::before {
+            width: 100%;
+        }
+
+        .btn-card {
+            flex: 1;
+            padding: 11px;
+            border: 1.5px solid var(--border);
+            background: transparent;
+            color: #999;
+            border-radius: 28px;
+            cursor: pointer;
+            font-size: 12px;
+            font-family: 'Cairo', sans-serif;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            letter-spacing: 0.5px;
+            font-weight: 500;
+            position: relative;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+
+        .btn-card .icon {
+            stroke: currentColor;
+        }
+
+        .btn-card::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(183, 110, 121, 0.25);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .btn-card:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .btn-card:hover {
+            border-color: var(--rose-gold);
+            color: var(--rose-gold);
+            background: rgba(183, 110, 121, 0.1);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(183, 110, 121, 0.15);
+        }
+
+        .btn-card:active {
+            transform: translateY(0);
+        }
+
+        .btn-card.danger {
+            border-color: #ff6b6b;
+            color: #ff6b6b;
+        }
+
+        .btn-card.danger::before {
+            background: rgba(255, 107, 107, 0.2);
+        }
+
+        .btn-card.danger:hover {
+            background: rgba(255, 107, 107, 0.1);
+            border-color: #ff4444;
+            color: #ff4444;
+            box-shadow: 0 8px 20px rgba(255, 107, 107, 0.15);
+        }
+
+        .btn-card.success {
+            border-color: #4caf50;
+            color: #4caf50;
+        }
+
+        .btn-card.success::before {
+            background: rgba(76, 175, 80, 0.2);
+        }
+
+        .btn-card.success:hover {
+            background: rgba(76, 175, 80, 0.12);
+            border-color: #45a049;
+            color: #45a049;
+            box-shadow: 0 8px 20px rgba(76, 175, 80, 0.15);
+        }
+
+        .card-spacer {
+            flex-grow: 1;
+        }
+
+        .btn-favorite {
+            border-color: #e394a1;
+            color: #e394a1;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-favorite:hover {
+            border-color: #d67a8d;
+            color: #d67a8d;
+            box-shadow: 0 8px 20px rgba(227, 148, 161, 0.25);
+            transform: translateY(-2px) scale(1.05);
+        }
+
+        .btn-favorite.active {
+            background: linear-gradient(135deg, #e394a1, #d67a8d);
+            color: #fff;
+            border-color: #e394a1;
+            animation: heartBeat 0.6s ease;
+        }
+
+        @keyframes heartBeat {
+            0%, 100% { transform: scale(1); }
+            25% { transform: scale(1.2); }
+            50% { transform: scale(0.95); }
+            75% { transform: scale(1.1); }
+        }
+
+        /* ==================== سلة التسوق ==================== */
+        .cart-sidebar {
+            position: fixed;
+            right: 0;
+            top: 0;
+            width: 400px;
+            height: 100vh;
+            background: rgba(15, 11, 12, 0.98);
+            border-left: 1px solid var(--border);
+            backdrop-filter: blur(20px);
+            transform: translateX(400px);
+            transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            z-index: 200;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+        }
+
+        .cart-sidebar.active {
+            transform: translateX(0);
+        }
+
+        .cart-header {
+            padding: 20px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .cart-items-list {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+        }
+
+        .cart-item {
+            display: flex;
+            gap: 15px;
+            padding: 15px;
+            background: var(--card-bg);
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border: 1px solid var(--border);
+        }
+
+        .cart-item-image {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, rgba(195, 139, 108, 0.1), rgba(210, 176, 123, 0.1));
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+        }
+
+        .cart-item-info {
+            flex: 1;
+        }
+
+        .cart-item-name {
+            font-weight: 600;
+            color: var(--gold);
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+
+        .cart-item-price {
+            color: var(--rose-gold);
+            font-size: 13px;
+            margin-bottom: 8px;
+        }
+
+        .cart-item-qty {
+            display: flex;
+            gap: 5px;
+            align-items: center;
+            font-size: 12px;
+        }
+
+        .qty-btn {
+            width: 20px;
+            height: 20px;
+            background: var(--border);
+            color: #cfc6bf;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 12px;
+            transition: all 0.2s;
+        }
+
+        .qty-btn:hover {
+            background: var(--border-light);
+        }
+
+        .remove-item {
+            color: #e74c3c;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.2s;
+        }
+
+        .remove-item:hover {
+            transform: scale(1.2);
+        }
+
+        .cart-empty {
+            text-align: center;
+            padding: 40px 20px;
+            color: #888;
+        }
+
+        .cart-footer {
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--gold);
+            margin-bottom: 15px;
+        }
+
+        .checkout-btn {
+            width: 100%;
+            padding: 15px;
+            background: var(--gold);
+            color: var(--dark-bg);
+            border: none;
+            border-radius: 8px;
+            font-family: 'Cairo', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .checkout-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(210, 176, 123, 0.3);
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s;
+            z-index: 150;
+        }
+
+        .overlay.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        /* ==================== Footer ==================== */
+        footer {
+            background: rgba(5, 5, 5, 0.8);
+            border-top: 1px solid var(--border);
+            padding: 40px 30px;
+            margin-top: 80px;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+
+        .footer-section h3 {
+            color: var(--gold);
+            margin-bottom: 15px;
+            font-size: 16px;
+        }
+
+        .footer-section p {
+            color: #999;
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #999;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--gold);
+        }
+
+        .footer-links a.link-disabled {
+            color: #555;
+            cursor: not-allowed;
+        }
+
+        /* ==================== Animations ==================== */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ==================== Responsive ==================== */
+        @media (max-width: 1024px) {
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            }
+
+            .cart-sidebar {
+                width: 350px;
+                transform: translateX(350px);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-wrap: wrap;
+            }
+
+            .header-search {
+                order: 3;
+                max-width: 100%;
+                flex: 1 1 100%;
+                margin-top: 15px;
+            }
+
+            .header-actions {
+                order: 2;
+            }
+
+            nav { order: 1; }
+
+            .products-grid { grid-template-columns: 1fr; gap: 20px; }
+            .perfume-card {
+                grid-template-columns: 1fr 1fr;
+                grid-template-areas: "info media";
+            }
+            .card-media { border-left: 1px solid var(--border); border-bottom: none; }
+            .perfume-image { min-height: 360px; }
+            .card-content { padding: 18px; }
+            .perfume-card h3 { font-size: 20px; }
+
+            .cart-sidebar {
+                width: 300px;
+                transform: translateX(300px);
+            }
+
+            .filter-section {
+                padding: 0 20px;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo-text { font-size: 16px; }
+            .logo-symbol { width: 32px; height: 32px; font-size: 14px; }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+                gap: 12px;
+                padding: 0 15px;
+            }
+
+            .cart-sidebar {
+                width: 100%;
+                transform: translateX(100%);
+            }
+
+            .price-tag { font-size: 20px; }
+            .card-actions { flex-direction: column; }
+            .btn-card { width: 100%; }
+        }
+
+        @media (max-width: 360px) {
+            .logo-text { font-size: 14px; letter-spacing: 4px; }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .filter-section {
+                padding: 0 15px;
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .filter-btn, .sort-select {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- الهيدر -->
+    <header>
+        <div class="nav-container">
+            <a class="logo" href="index.html.html" aria-label="AROMA">
+                <div class="logo-symbol">A</div>
+                <div class="logo-text">AROMA</div>
+            </a>
+
+            <nav>
+                <ul>
+                    <li><a href="index.html.html">الرئيسية</a></li>
+                    <li><a href="customer.html">المتجر</a></li>
+                    <li><a href="compare.html">التقييمات</a></li>
+                </ul>
+            </nav>
+
+            <div class="header-search">
+                <span class="search-icon" aria-hidden="true">
+                    <svg class="icon icon-muted" viewBox="0 0 24 24">
+                        <circle cx="11" cy="11" r="7"></circle>
+                        <line x1="16.65" y1="16.65" x2="21" y2="21"></line>
+                    </svg>
+                </span>
+                <input type="text" id="customerSearch" class="search-input" placeholder="ابحث عن عطر أو ماركة...">
+            </div>
+
+            <div class="header-actions">
+                <div class="header-icon" id="wishlistIcon" title="المفضلة">
+                    <span aria-hidden="true">
+                        <svg class="icon" viewBox="0 0 24 24">
+                            <path d="M20.8 7.5c0 4.4-8.8 10.5-8.8 10.5S3.2 11.9 3.2 7.5a4.7 4.7 0 0 1 8.8-2.2 4.7 4.7 0 0 1 8.8 2.2z"></path>
+                        </svg>
+                    </span>
+                    <span class="header-icon-badge" id="wishlistBadge">0</span>
+                </div>
+                <div class="header-icon" id="cartIcon" title="سلة التسوق">
+                    <span aria-hidden="true">
+                        <svg class="icon" viewBox="0 0 24 24">
+                            <circle cx="9" cy="20" r="1.7"></circle>
+                            <circle cx="17" cy="20" r="1.7"></circle>
+                            <path d="M3 4h2l2.5 12h10.5l2-9H6.2"></path>
+                        </svg>
+                    </span>
+                    <span class="header-icon-badge" id="cartBadge">0</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- الفلترة والترتيب -->
+    <div class="filter-section">
+        <div class="filter-wrapper">
+            <button class="filter-btn active" data-filter="all">الكل</button>
+            <button class="filter-btn" data-filter="special">عروضنا الخاصة</button>
+            <div id="brandFilters"></div>
+        </div>
+
+        <div style="display: flex; gap: 15px; margin-right: auto;">
+            <select id="sortSelect" class="sort-select">
+                <option value="">ترتيب حسب</option>
+                <option value="newest">الأحدث</option>
+                <option value="price-low">السعر: الأقل أولاً</option>
+                <option value="price-high">السعر: الأعلى أولاً</option>
+                <option value="rating">الأعلى تقييماً</option>
+            </select>
+            <a href="compare.html" style="display: inline-flex; align-items: center; padding: 10px 15px; background: var(--card-bg); border: 1px solid var(--border); border-radius: 8px; color: #cfc6bf; text-decoration: none; transition: all 0.3s; font-size: 14px;">⚖️ المقارنة</a>
+            <a href="index.html.html" style="display: inline-flex; align-items: center; padding: 10px 15px; background: var(--card-bg); border: 1px solid var(--border); border-radius: 8px; color: #cfc6bf; text-decoration: none; transition: all 0.3s; font-size: 14px;">🏠 الرئيسية</a>
+        </div>
+    </div>
+
+    <!-- المحتوى الرئيسي -->
+    <main class="main-content">
+        <section id="specialSection" class="brand-section">
+            <div class="brand-separator">
+                <span class="brand-separator-title">عروضنا الخاصة</span>
+            </div>
+            <div class="products-grid" id="specialGrid"></div>
+        </section>
+        <div id="brandsContainer"></div>
+        <div id="noProductsMsg" class="no-products" style="display: none;">لا توجد منتجات مطابقة 😔</div>
+    </main>
+
+    <div id="overlay" class="overlay"></div>
+
+    <aside id="cartSidebar" class="cart-sidebar" aria-hidden="true">
+        <div class="cart-header">
+            <h3 style="font-family: 'Playfair Display', serif; color: var(--rose-gold);">سلة التسوق</h3>
+            <button id="closeCart" class="btn-card">إغلاق</button>
+        </div>
+        <div class="cart-items-list" id="cartItems">
+            <div class="cart-empty">لا توجد منتجات في السلة</div>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total"><span>المجموع</span><span id="cartTotal">0 د.ا</span></div>
+            <button id="checkoutBtn" class="checkout-btn">إتمام الطلب</button>
+        </div>
+    </aside>
+
+    <!-- الفوتر -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>عن AROMA</h3>
+                <p>متجر متخصص في أفخر العطور العربية والعالمية. نحن نقدم أفضل التشكيلات المختارة بعناية لأفضل الأسعار.</p>
+            </div>
+
+            <div class="footer-section">
+                <h3>روابط سريعة</h3>
+                <ul class="footer-links">
+                    <li><a href="javascript:void(0)" data-footer-link="about">من نحن</a></li>
+                    <li><a href="javascript:void(0)" data-footer-link="contact">تواصل معنا</a></li>
+                    <li><a href="javascript:void(0)" data-footer-link="shipping">سياسة الشحن</a></li>
+                    <li><a href="javascript:void(0)" data-footer-link="returns">سياسة الإرجاع</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>خدمة العملاء</h3>
+                <ul class="footer-links">
+                    <li><a href="javascript:void(0)" data-footer-link="help">مركز المساعدة</a></li>
+                    <li><a href="javascript:void(0)" data-footer-link="track">تتبع الطلب</a></li>
+                    <li><a href="javascript:void(0)" data-footer-link="faq">الأسئلة الشائعة</a></li>
+                    <li><a href="javascript:void(0)" data-footer-link="privacy">سياسة الخصوصية</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-section">
+                <h3>تابعنا</h3>
+                <ul class="footer-links">
+                    <li><a href="javascript:void(0)" data-footer-link="instagram">Instagram 📷</a></li>
+                    <li><a href="javascript:void(0)" data-footer-link="facebook">Facebook 👍</a></li>
+                    <li><a href="javascript:void(0)" data-footer-link="twitter">Twitter 🐦</a></li>
+                    <li><a href="javascript:void(0)" data-footer-link="tiktok">TikTok 🎵</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const defaultFooterLinks = {
+            about: 'https://example.com/about',
+            contact: 'https://example.com/contact',
+            shipping: 'https://example.com/shipping',
+            returns: 'https://example.com/returns',
+            help: 'https://example.com/help',
+            track: 'https://example.com/track',
+            faq: 'https://example.com/faq',
+            privacy: 'https://example.com/privacy',
+            instagram: 'https://www.instagram.com/accounts/login/',
+            facebook: 'https://www.facebook.com/login/',
+            twitter: 'https://twitter.com/login',
+            tiktok: 'https://www.tiktok.com/login'
+        };
+
+        function loadFooterLinks() {
+            return JSON.parse(localStorage.getItem('aroma_footer_links')) || defaultFooterLinks;
+        }
+
+        function applyFooterLinks() {
+            const links = loadFooterLinks();
+            document.querySelectorAll('[data-footer-link]').forEach(link => {
+                const key = link.getAttribute('data-footer-link');
+                const url = links[key];
+                if (!link.dataset.footerBound) {
+                    link.addEventListener('click', (event) => {
+                        if (link.classList.contains('link-disabled')) {
+                            event.preventDefault();
+                            alert('الرابط غير مضاف بعد. يمكنك تحديثه من قسم الادارة.');
+                        }
+                    });
+                    link.dataset.footerBound = 'true';
+                }
+                if (url) {
+                    link.href = url;
+                    if (url.startsWith('http')) {
+                        link.target = '_blank';
+                        link.rel = 'noopener';
+                    } else {
+                        link.removeAttribute('target');
+                        link.removeAttribute('rel');
+                    }
+                    link.classList.remove('link-disabled');
+                    link.removeAttribute('aria-disabled');
+                } else {
+                    link.href = 'javascript:void(0)';
+                    link.removeAttribute('target');
+                    link.removeAttribute('rel');
+                    link.classList.add('link-disabled');
+                    link.setAttribute('aria-disabled', 'true');
+                }
+            });
+        }
+
+        const adminUnlockCode = '1211';
+        const whatsappNumber = '972568121144';
+        let adminBuffer = '';
+        let currentFilter = 'all';
+        let currentSort = '';
+        let searchQuery = '';
+        let sourceProducts = [];
+        let reihaProducts = [];
+        let brandProducts = [];
+        let allProducts = [];
+        let cart = JSON.parse(localStorage.getItem('aroma_cart')) || [];
+        let wishlist = JSON.parse(localStorage.getItem('aroma_wishlist')) || [];
+
+        // ==================== تحميل البيانات ==================== //
+        function loadProducts() {
+            const storedProducts = JSON.parse(localStorage.getItem('aromaProducts')) || [];
+            const legacyBrandProducts = JSON.parse(localStorage.getItem('brandProducts')) || [];
+
+            if (legacyBrandProducts.length) {
+                legacyBrandProducts.forEach(product => {
+                    product.displayOnHome = product.displayOnHome !== false;
+                    product.displayOnCustomer = true;
+                    product.customerSection = product.customerSection || 'brand';
+                });
+                sourceProducts = [...storedProducts, ...legacyBrandProducts];
+                localStorage.setItem('aromaProducts', JSON.stringify(sourceProducts));
+                localStorage.setItem('brandProducts', JSON.stringify([]));
+            } else {
+                sourceProducts = [...storedProducts];
+            }
+
+            if (sourceProducts.length === 0) {
+                sourceProducts = [
+                    { id: 1, name: 'عطر الياسمين الملكي', brand: 'AROMA Royal', price: 250, image: null, emoji: '⭐', rating: 4.8, reviews: 32, hidden: false, displayOnHome: true, displayOnCustomer: true, customerSection: 'special' },
+                    { id: 3, name: 'عطر الورد القديم', brand: 'AROMA Royal', price: 180, image: null, emoji: '⭐', rating: 4.6, reviews: 28, hidden: false, displayOnHome: true, displayOnCustomer: true, customerSection: 'special' },
+                    { id: 2, name: 'عطر العود الأصلي', brand: 'Dior', price: 350, image: null, emoji: '🏢', rating: 4.9, reviews: 45, hidden: false, displayOnHome: true, displayOnCustomer: true, customerSection: 'brand' }
+                ];
+                localStorage.setItem('aromaProducts', JSON.stringify(sourceProducts));
+            }
+
+            let sourceUpdated = false;
+            sourceProducts = sourceProducts.map((product, index) => {
+                if (!product.id) {
+                    product.id = `product-legacy-${Date.now()}-${index}`;
+                    sourceUpdated = true;
+                }
+                if (product.displayOnHome === undefined) {
+                    product.displayOnHome = true;
+                    sourceUpdated = true;
+                }
+                if (product.displayOnCustomer === undefined) {
+                    product.displayOnCustomer = true;
+                    sourceUpdated = true;
+                }
+                if (!product.customerSection) {
+                    product.customerSection = 'special';
+                    sourceUpdated = true;
+                }
+                return product;
+            });
+
+            if (sourceUpdated) {
+                localStorage.setItem('aromaProducts', JSON.stringify(sourceProducts));
+            }
+
+            const customerProducts = sourceProducts.filter(p => p.displayOnCustomer !== false);
+            reihaProducts = customerProducts.filter(p => (p.customerSection || 'special') === 'special');
+            brandProducts = customerProducts.filter(p => (p.customerSection || 'special') === 'brand');
+
+            normalizeProducts();
+            renderBrandFilters();
+            renderProducts();
+            updateBadges();
+        }
+
+        function normalizeProducts() {
+            reihaProducts = reihaProducts.map(product => {
+                product.type = 'special';
+                product.hidden = product.hidden || false;
+                product.rating = product.rating || Math.random() * 2 + 3.5;
+                product.reviews = product.reviews || Math.floor(Math.random() * 50) + 10;
+                product.emoji = product.emoji || '⭐';
+                return product;
+            });
+
+            brandProducts = brandProducts.map(product => {
+                product.type = 'brand';
+                product.hidden = product.hidden || false;
+                product.rating = product.rating || Math.random() * 2 + 3.5;
+                product.reviews = product.reviews || Math.floor(Math.random() * 50) + 10;
+                product.emoji = product.emoji || '🏢';
+                return product;
+            });
+
+            allProducts = [...reihaProducts, ...brandProducts];
+        }
+
+        // ==================== تصفية المنتجات ==================== //
+        function renderBrandFilters() {
+            const brands = [...new Set(brandProducts.map(p => p.brand).filter(Boolean))];
+            const brandFiltersContainer = document.getElementById('brandFilters');
+
+            brandFiltersContainer.innerHTML = '';
+
+            brands.forEach(brand => {
+                const btn = document.createElement('button');
+                btn.className = 'filter-btn';
+                btn.textContent = brand;
+                btn.dataset.filter = `brand-${brand}`;
+                btn.addEventListener('click', () => filterProducts(`brand-${brand}`));
+                brandFiltersContainer.appendChild(btn);
+            });
+        }
+
+        function filterProducts(filter) {
+            currentFilter = filter;
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.dataset.filter === filter) {
+                    btn.classList.add('active');
+                }
+            });
+            renderProducts();
+        }
+
+        function applySort() {
+            const sortValue = document.getElementById('sortSelect').value;
+            currentSort = sortValue;
+            renderProducts();
+        }
+
+        // ==================== عرض المنتجات ==================== //
+        function hasAdminAccess() {
+            return sessionStorage.getItem('aromaPerfumeAdminPassword') === '1211';
+        }
+
+        function matchesSearch(product) {
+            if (!searchQuery) return true;
+            const q = searchQuery.toLowerCase();
+            return (product.name || '').toLowerCase().includes(q) || (product.brand || '').toLowerCase().includes(q);
+        }
+
+        function sortItems(items) {
+            const sorted = [...items];
+            if (currentSort === 'newest') {
+                sorted.sort((a, b) => (b.product.id || 0) - (a.product.id || 0));
+            } else if (currentSort === 'price-low') {
+                sorted.sort((a, b) => (a.product.price || 0) - (b.product.price || 0));
+            } else if (currentSort === 'price-high') {
+                sorted.sort((a, b) => (b.product.price || 0) - (a.product.price || 0));
+            } else if (currentSort === 'rating') {
+                sorted.sort((a, b) => (b.product.rating || 0) - (a.product.rating || 0));
+            }
+            return sorted;
+        }
+
+        function createProductCard(product, index, type, isAdminUnlocked) {
+            const displayBrandName = product.brand || (type === 'special' ? 'عروضنا الخاصة' : '');
+            const isInWishlist = wishlist.some(item => item.id === product.id && item.brand === product.brand);
+            const descText = product.desc ? `"${product.desc}"` : 'لا يوجد وصف لهذا العطر حالياً.';
+            const discountPercent = Number(product.discountPercent) || 0;
+            const priceValue = Number(product.price);
+            const hasDiscount = Number.isFinite(priceValue) && discountPercent > 0 && discountPercent <= 100;
+            const discountedPrice = hasDiscount
+                ? Math.max(0, priceValue - (priceValue * discountPercent) / 100)
+                : priceValue;
+            const currencyValue = product.currency || 'د.ا';
+
+            const imageSection = product.image
+                ? `<div class="perfume-image"><img src="${product.image}" alt="${product.name}" data-full="${product.image}"></div>`
+                : `<div class="perfume-image no-image"></div>`;
+
+            const infoLine = product.size
+                ? `<span class="info-pill">${product.gender || 'للجنسين'}</span><span class="info-dot"></span><span class="info-pill">${product.size}</span>`
+                : `<span class="info-pill">${product.gender || 'للجنسين'}</span>`;
+
+            const hideBtn = product.hidden
+                ? `<button class="btn-card success" onclick="toggleVisibility('${type}', ${index})">✓ إظهار</button>`
+                : `<button class="btn-card" onclick="toggleVisibility('${type}', ${index})">إخفاء</button>`;
+
+            const priceMarkup = hasDiscount
+                ? `<div class="price-tag has-discount">
+                        <span class="old-price">${priceValue} ${currencyValue}</span>
+                        <span class="new-price">${discountedPrice} ${currencyValue}</span>
+                        <span class="discount-badge">-${discountPercent}%</span>
+                   </div>`
+                : `<div class="price-tag">${product.price} ${currencyValue}</div>`;
+
+            const detailsMarkup = `
+                <div class="card-details">
+                    ${displayBrandName ? `
+                    <div class="detail-row">
+                        <span class="detail-label">الماركة</span>
+                        <span class="detail-value">${displayBrandName}</span>
+                    </div>` : ''}
+                    ${product.quantity && !product.limited ? `
+                    <div class="detail-row">
+                        <span class="detail-label">المتوفر</span>
+                        <span class="detail-value">${product.quantity} قطعة</span>
+                    </div>` : ''}
+                </div>
+            `;
+
+            return `
+                <div class="perfume-card ${product.hidden ? 'hidden-card' : ''}">
+                    <div class="card-media">
+                        ${displayBrandName ? `<div class="brand-label">${displayBrandName}</div>` : ''}
+                        ${imageSection}
+                    </div>
+                    <div class="card-content">
+                        <div class="card-header">
+                            <h3>${product.name}</h3>
+                            <div class="info-line">
+                                ${infoLine}
+                            </div>
+                        </div>
+                        <p class="card-desc">${descText}</p>
+                        ${detailsMarkup}
+                        ${priceMarkup}
+                        <div class="card-spacer"></div>
+                        ${!product.hidden ? `
+                        <a href="https://wa.me/${whatsappNumber}?text=أهلاً، أرغب بطلب عطر: ${encodeURIComponent(product.name)}" 
+                            class="btn-luxury btn-whatsapp" target="_blank" style="display: block; text-align: center; margin: 12px 0 10px 0;">
+                            <svg class="icon icon-light icon-btn" viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M4 6h16v10H7l-3 3V6z"></path>
+                            </svg>
+                            اطلب عبر الواتس
+                        </a>
+                        <div class="card-actions" style="border-top: none; padding-top: 0;">
+                            <button class="btn-card" onclick="addToCart('${product.id}')">
+                                <svg class="icon icon-btn" viewBox="0 0 24 24" aria-hidden="true">
+                                    <circle cx="9" cy="20" r="1.7"></circle>
+                                    <circle cx="17" cy="20" r="1.7"></circle>
+                                    <path d="M3 4h2l2.5 12h10.5l2-9H6.2"></path>
+                                </svg>
+                                للسلة
+                            </button>
+                            <button class="btn-card ${isInWishlist ? 'btn-favorite active' : 'btn-favorite'}" onclick="toggleWishlist(event, '${product.id}')">
+                                <svg class="icon icon-btn" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path d="M20.8 7.5c0 4.4-8.8 10.5-8.8 10.5S3.2 11.9 3.2 7.5a4.7 4.7 0 0 1 8.8-2.2 4.7 4.7 0 0 1 8.8 2.2z"></path>
+                                </svg>
+                                ${isInWishlist ? 'مفضل' : 'حفظ'}
+                            </button>
+                        </div>` : ''}
+                        ${isAdminUnlocked ? `
+                        <div class="card-actions">
+                            ${hideBtn}
+                            <button class="btn-card" onclick="startEdit('${type}', ${index})">
+                                <svg class="icon icon-btn" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path d="M3 17.25V21h3.75L19.81 7.94l-3.75-3.75L3 17.25z"></path>
+                                    <path d="M14.06 4.19l3.75 3.75"></path>
+                                </svg>
+                                تعديل
+                            </button>
+                            <button class="btn-card danger" onclick="deleteProduct('${type}', ${index})">
+                                <svg class="icon icon-btn" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path d="M3 6h18"></path>
+                                    <path d="M8 6V4h8v2"></path>
+                                    <rect x="6" y="6" width="12" height="14" rx="2"></rect>
+                                    <path d="M10 11v6"></path>
+                                    <path d="M14 11v6"></path>
+                                </svg>
+                                حذف
+                            </button>
+                        </div>` : ''}
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderProducts() {
+            const specialSection = document.getElementById('specialSection');
+            const specialGrid = document.getElementById('specialGrid');
+            const brandsContainer = document.getElementById('brandsContainer');
+            const noProductsMsg = document.getElementById('noProductsMsg');
+            const isAdminUnlocked = hasAdminAccess();
+
+            specialGrid.innerHTML = '';
+            brandsContainer.innerHTML = '';
+            noProductsMsg.style.display = 'none';
+
+            const specialItems = sortItems(
+                reihaProducts
+                    .map((product, index) => ({ product, index }))
+                    .filter(item => matchesSearch(item.product) && (isAdminUnlocked || !item.product.hidden))
+            );
+
+            const brandItems = sortItems(
+                brandProducts
+                    .map((product, index) => ({ product, index }))
+                    .filter(item => matchesSearch(item.product) && (isAdminUnlocked || !item.product.hidden))
+            );
+
+            const showSpecial = currentFilter === 'all' || currentFilter === 'special';
+            specialSection.style.display = showSpecial ? 'block' : 'none';
+
+            let hasAny = false;
+
+            if (showSpecial && specialItems.length > 0) {
+                hasAny = true;
+                specialItems.forEach(item => {
+                    specialGrid.innerHTML += createProductCard(item.product, item.index, 'special', isAdminUnlocked);
+                });
+            }
+
+            if (currentFilter !== 'special') {
+                const selectedBrand = currentFilter.startsWith('brand-')
+                    ? currentFilter.replace('brand-', '')
+                    : null;
+
+                const brands = [...new Set(brandItems.map(item => item.product.brand || 'ماركة غير محددة'))];
+                const filteredBrands = selectedBrand ? brands.filter(brand => brand === selectedBrand) : brands;
+
+                filteredBrands.forEach(brand => {
+                    const itemsForBrand = brandItems.filter(item => (item.product.brand || 'ماركة غير محددة') === brand);
+                    if (itemsForBrand.length === 0) return;
+
+                    hasAny = true;
+                    const section = document.createElement('section');
+                    section.className = 'brand-section';
+                    section.innerHTML = `
+                        <div class="brand-separator">
+                            <span class="brand-separator-title">${brand}</span>
+                        </div>
+                    `;
+
+                    const grid = document.createElement('div');
+                    grid.className = 'products-grid';
+                    itemsForBrand.forEach(item => {
+                        grid.innerHTML += createProductCard(item.product, item.index, 'brand', isAdminUnlocked);
+                    });
+
+                    section.appendChild(grid);
+                    brandsContainer.appendChild(section);
+                });
+            }
+
+            if (!hasAny) {
+                noProductsMsg.style.display = 'block';
+            }
+        }
+
+        function saveProducts() {
+            localStorage.setItem('aromaProducts', JSON.stringify(sourceProducts));
+        }
+
+        function toggleVisibility(productId) {
+            const product = sourceProducts.find(item => item.id == productId);
+            if (!product) return;
+            product.hidden = !product.hidden;
+            saveProducts();
+            loadProducts();
+        }
+
+        function deleteProduct(productId) {
+            const productIndex = sourceProducts.findIndex(item => item.id == productId);
+            if (productIndex === -1) return;
+            if (!confirm('هل تريد حذف هذا المنتج نهائياً؟')) return;
+            sourceProducts.splice(productIndex, 1);
+            saveProducts();
+            loadProducts();
+        }
+
+        function startEdit(productId) {
+            const product = sourceProducts.find(item => item.id == productId);
+            if (!product) return;
+
+            const name = prompt('اسم العطر:', product.name || '');
+            if (name === null) return;
+            const price = prompt('السعر (رقم):', product.price || '');
+            if (price === null) return;
+            const image = prompt('رابط الصورة (اختياري):', product.image || '');
+            if (image === null) return;
+            const desc = prompt('وصف مختصر:', product.desc || '');
+            if (desc === null) return;
+            const gender = prompt('الجنس (للرجال/للنساء/للجنسين):', product.gender || 'للجنسين');
+            if (gender === null) return;
+            const size = prompt('الحجم (اختياري):', product.size || '');
+            if (size === null) return;
+            const emoji = prompt('إيموجي (اختياري):', product.emoji || '🎀');
+            if (emoji === null) return;
+
+            const brand = prompt('اسم الماركة (اختياري):', product.brand || '');
+            if (brand === null) return;
+            product.brand = brand.trim();
+
+            product.name = name.trim() || product.name;
+            product.price = Number(price) || product.price;
+            product.image = image.trim() || product.image;
+            product.desc = desc.trim() || product.desc;
+            product.gender = gender.trim() || product.gender;
+            product.size = size.trim() || product.size;
+            product.emoji = emoji.trim() || product.emoji;
+
+            saveProducts();
+            loadProducts();
+        }
+
+        // ==================== إدارة سلة التسوق ==================== //
+        function addToCart(productId) {
+            const product = allProducts.find(p => p.id == productId);
+            if (!product) return;
+
+            const existingItem = cart.find(item => item.id === product.id);
+            
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({
+                    id: product.id,
+                    name: product.name,
+                    brand: product.brand,
+                    price: product.price,
+                    quantity: 1,
+                    emoji: product.emoji
+                });
+            }
+
+            saveCart();
+            updateCartDisplay();
+            showNotification(`✅ تم إضافة ${product.name} إلى السلة!`);
+        }
+
+        function removeFromCart(productId) {
+            cart = cart.filter(item => item.id != productId);
+            saveCart();
+            updateCartDisplay();
+        }
+
+        function updateQuantity(productId, quantity) {
+            const item = cart.find(item => item.id == productId);
+            if (item) {
+                item.quantity = Math.max(1, quantity);
+                saveCart();
+                updateCartDisplay();
+            }
+        }
+
+        function saveCart() {
+            localStorage.setItem('aroma_cart', JSON.stringify(cart));
+        }
+
+        function updateCartDisplay() {
+            const cartItems = document.getElementById('cartItems');
+            const cartTotalEl = document.getElementById('cartTotal');
+
+            if (!cartItems || !cartTotalEl) {
+                updateBadges();
+                return;
+            }
+
+            if (cart.length === 0) {
+                cartItems.innerHTML = '<div class="cart-empty">لا توجد منتجات في السلة</div>';
+                cartTotalEl.textContent = '0 د.ا';
+                updateBadges();
+                return;
+            }
+
+            let total = 0;
+            cartItems.innerHTML = cart.map(item => {
+                total += (Number(item.price) || 0) * (Number(item.quantity) || 0);
+                return `
+                    <div class="cart-item">
+                        <div class="cart-item-image">${item.emoji || '🎀'}</div>
+                        <div class="cart-item-info">
+                            <div class="cart-item-name">${item.name}</div>
+                            <div class="cart-item-price">${item.price} د.ا</div>
+                            <div class="cart-item-qty">
+                                <button class="qty-btn" onclick="updateQuantity('${item.id}', ${item.quantity - 1})">-</button>
+                                <span>${item.quantity}</span>
+                                <button class="qty-btn" onclick="updateQuantity('${item.id}', ${item.quantity + 1})">+</button>
+                            </div>
+                        </div>
+                        <span class="remove-item" onclick="removeFromCart('${item.id}')">🗑️</span>
+                    </div>
+                `;
+            }).join('');
+
+            cartTotalEl.textContent = `${total} د.ا`;
+            updateBadges();
+        }
+
+        // ==================== إدارة المفضلة ==================== //
+        function toggleWishlist(event, productId) {
+            event.stopPropagation();
+
+            const index = wishlist.findIndex(item => item.id == productId);
+            
+            if (index > -1) {
+                wishlist.splice(index, 1);
+            } else {
+                const product = allProducts.find(p => p.id == productId);
+                if (product) {
+                    wishlist.push({
+                        id: product.id,
+                        name: product.name,
+                        brand: product.brand,
+                        price: product.price,
+                        emoji: product.emoji
+                    });
+                }
+            }
+
+            localStorage.setItem('aroma_wishlist', JSON.stringify(wishlist));
+            updateBadges();
+            renderProducts();
+        }
+
+        // ==================== المقارنة ==================== //
+        function compareProduct(productId, brand) {
+            showNotification('🔄 ميزة المقارنة ستأتي قريباً!');
+        }
+
+        // ==================== تحديث الشارات والبحث ==================== //
+        function updateBadges() {
+            document.getElementById('cartBadge').textContent = cart.length;
+            document.getElementById('wishlistBadge').textContent = wishlist.length;
+        }
+
+        function searchProducts(query) {
+            searchQuery = (query || '').trim();
+            renderProducts();
+        }
+
+        // ==================== واجهة المستخدم ==================== //
+        const cartSidebar = document.getElementById('cartSidebar');
+        const overlay = document.getElementById('overlay');
+        const closeCartBtn = document.getElementById('closeCart');
+        const checkoutBtn = document.getElementById('checkoutBtn');
+        const cartIcon = document.getElementById('cartIcon');
+
+        if (cartIcon && cartSidebar && overlay) {
+            cartIcon.addEventListener('click', () => {
+                cartSidebar.classList.add('active');
+                overlay.classList.add('active');
+            });
+        }
+
+        if (closeCartBtn && cartSidebar && overlay) {
+            closeCartBtn.addEventListener('click', () => {
+                cartSidebar.classList.remove('active');
+                overlay.classList.remove('active');
+            });
+        }
+
+        if (overlay && cartSidebar) {
+            overlay.addEventListener('click', () => {
+                cartSidebar.classList.remove('active');
+                overlay.classList.remove('active');
+            });
+        }
+
+        document.getElementById('wishlistIcon').addEventListener('click', () => {
+            showNotification(`💚 لديك ${wishlist.length} منتج في المفضلة`);
+        });
+
+        document.getElementById('customerSearch').addEventListener('input', (e) => {
+            searchProducts(e.target.value);
+        });
+
+        document.addEventListener('keydown', (event) => {
+            if (hasAdminAccess()) return;
+            const tag = (event.target && event.target.tagName) ? event.target.tagName.toLowerCase() : '';
+            if (tag === 'input' || tag === 'textarea') return;
+            if (!/^[0-9]$/.test(event.key)) {
+                adminBuffer = '';
+                return;
+            }
+            adminBuffer += event.key;
+            if (adminBuffer.length > adminUnlockCode.length) {
+                adminBuffer = adminBuffer.slice(-adminUnlockCode.length);
+            }
+            if (adminBuffer === adminUnlockCode) {
+                sessionStorage.setItem('aromaPerfumeAdminPassword', adminUnlockCode);
+                adminBuffer = '';
+                showNotification('✅ تم تفعيل وضع الأدمن');
+                renderProducts();
+            }
+        });
+
+        window.addEventListener('storage', (event) => {
+            if (event.key === 'aromaProducts' || event.key === 'brandProducts') {
+                loadProducts();
+            }
+            if (event.key === 'aroma_footer_links') {
+                applyFooterLinks();
+            }
+        });
+
+        document.getElementById('sortSelect').addEventListener('change', () => {
+            applySort();
+        });
+
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                filterProducts(e.target.dataset.filter);
+            });
+        });
+
+        if (checkoutBtn && cartSidebar && overlay) {
+            checkoutBtn.addEventListener('click', () => {
+                if (cart.length === 0) {
+                    showNotification('⚠️ السلة فارغة!');
+                    return;
+                }
+                showNotification('✅ تم إرسال طلبك! سيتم التواصل معك قريباً');
+                cart = [];
+                saveCart();
+                updateCartDisplay();
+                cartSidebar.classList.remove('active');
+                overlay.classList.remove('active');
+            });
+        }
+
+        // ==================== الإشعارات ==================== //
+        function showNotification(message) {
+            const notif = document.createElement('div');
+            notif.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: rgba(0, 0, 0, 0.9);
+                color: #d2b07b;
+                padding: 15px 25px;
+                border-radius: 8px;
+                border: 1px solid rgba(210, 176, 123, 0.3);
+                z-index: 1000;
+                animation: slideUp 0.3s ease;
+                backdrop-filter: blur(10px);
+            `;
+            notif.textContent = message;
+            document.body.appendChild(notif);
+            
+            setTimeout(() => notif.remove(), 3000);
+        }
+
+        // ==================== التهيئة ==================== //
+        applyFooterLinks();
+        loadProducts();
+        updateBadges();
+    </script>
+</body>
+</html>

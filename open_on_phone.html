@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <title>افتح الموقع على الهاتف</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body { font-family: 'Cairo', sans-serif; background:#0f0b0c; color:#cfc6bf; padding:24px; }
+    a { color: #d2b07b; }
+    .card { background: rgba(255,255,255,0.02); padding:18px; border-radius:12px; border:1px solid rgba(195,139,108,0.15); max-width:420px; }
+    img { display:block; margin:12px 0; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>افتح الموقع على هاتفك</h2>
+    <p>رابط الموقع (اضغط أو انسخ):<br>
+      <a href="https://aroma-sepia.vercel.app" target="_blank">https://aroma-sepia.vercel.app</a>
+    </p>
+    <p>امسح رمز الـ QR التالي بكاميرا هاتفك لفتح الموقع مباشرة:</p>
+    <img id="qrImage" src="https://chart.googleapis.com/chart?cht=qr&chs=300x300&chl=https://aroma-sepia.vercel.app" alt="QR" width="300" height="300">
+    <p style="font-size:13px; margin-top:8px; color:#b0a898;">إذا لم يظهر الرمز، افتح الصورة مباشرة: <a id="qrDirectLink" href="https://chart.googleapis.com/chart?cht=qr&chs=300x300&chl=https://aroma-sepia.vercel.app" target="_blank">عرض الـ QR</a></p>
+    <script>
+      // fallback to qrserver if google chart fails
+      (function(){
+        var img = document.getElementById('qrImage');
+        img.onerror = function(){
+          var fallback = 'https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=' + encodeURIComponent('https://aroma-sepia.vercel.app');
+          img.src = fallback;
+          var link = document.getElementById('qrDirectLink');
+          link.href = fallback;
+        };
+      })();
+    </script>
+    <p>إن واجهت مشاكل بالنسخة المؤقتة (كاش/خدمة العملة): افتح DevTools → Application → Service Workers → Unregister أو امسح الكاش في المتصفح ثم أعد المحاولة.</p>
+  </div>
+</body>
+</html>

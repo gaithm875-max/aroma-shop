@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="ar">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Diagnose / تشخيص الموقع</title>
+  <style>body{font-family:system-ui,Arial;margin:12px}button{margin:6px 4px;padding:8px}pre{background:#111;color:#efe;padding:12px;white-space:pre-wrap;max-height:60vh;overflow:auto}</style>
+</head>
+<body>
+  <h2>Diagnose — تشخيص</h2>
+  <p>أدوات سريعة لمعرفة حالة الـ Service Worker و الكاش و معاينة ما يُعاد من الخادم.</p>
+  <div>
+    <button id="ua">Show UA / عرض المتصفح</button>
+    <button id="listSW">List ServiceWorkers</button>
+    <button id="unregister">Unregister All SWs</button>
+    <button id="listCaches">List Caches</button>
+    <button id="clearCaches">Clear All Caches</button>
+    <button id="fetchIndex">Fetch /index.html (no-cache)</button>
+  </div>
+  <pre id="output">Ready.
+User-Agent: </pre>
+
+  <script>
+    const outEl = document.getElementById('output');
+    function out(s){ outEl.textContent += '\n' + s; outEl.scrollTop = outEl.scrollHeight; }
+    document.getElementById('ua').onclick = ()=> out('Navigator.userAgent: '+navigator.userAgent);
+
+    document.getElementById('listSW').onclick = async ()=>{
+      if (!('serviceWorker' in navigator)){ out('ServiceWorker API not available'); return }
+      try{
+        const regs = await navigator.serviceWorker.getRegistrations();
+        out('Registrations: '+regs.length);
+        regs.forEach(r=>{
+          out(JSON.stringify({scope: r.scope, active: !!r.active, scriptURL: r.active && r.active.scriptURL}))
+        });
+      }catch(e){ out('Error listing SW: '+e) }
+    }
+
+    document.getElementById('unregister').onclick = async ()=>{
+      if (!('serviceWorker' in navigator)){ out('No SW API'); return }
+      try{
+        const regs = await navigator.serviceWorker.getRegistrations();
+        await Promise.all(regs.map(r=>r.unregister()));
+        out('Unregistered '+regs.length+' registrations (if any).');
+      }catch(e){ out('Unregister error: '+e) }
+    }
+
+    document.getElementById('listCaches').onclick = async ()=>{
+      if (!('caches' in window)){ out('CacheStorage API not available'); return }
+      try{
+        const keys = await caches.keys(); out('Caches: '+JSON.stringify(keys));
+      }catch(e){ out('List caches error: '+e) }
+    }
+
+    document.getElementById('clearCaches').onclick = async ()=>{
+      if (!('caches' in window)){ out('No CacheStorage'); return }
+      try{
+        const keys = await caches.keys();
+        await Promise.all(keys.map(k=>caches.delete(k)));
+        out('Cleared caches: '+JSON.stringify(keys));
+      }catch(e){ out('Clear caches error: '+e) }
+    }
+
+    document.getElementById('fetchIndex').onclick = async ()=>{
+      out('Fetching /index.html with no-store...');
+      try{
+        const resp = await fetch('/index.html?_='+Date.now(), {cache: 'no-store', credentials: 'same-origin'});
+        out('Response status: '+resp.status+' '+resp.statusText);
+        const ct = resp.headers.get('content-type') || '';
+        out('Content-Type: '+ct);
+        const text = await resp.text();
+        out('--- Begin /index.html (first 5000 chars) ---');
+        out(text.slice(0,5000));
+        out('--- End ---');
+      }catch(e){ out('Fetch error: '+e) }
+    }
+
+    // show UA at top
+    outEl.textContent = 'Ready.\nUser-Agent: ' + navigator.userAgent + '\n';
+  </script>
+</body>
+</html>

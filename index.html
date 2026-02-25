@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>AROMA | مجموعة العطور - عالم من الفخامة</title>
+    <meta name="viewport" content="width=1024, initial-scale=1">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+        <script>
+            // Ensure any previously installed service workers are unregistered
+            if ('serviceWorker' in navigator) {
+                try {
+                    navigator.serviceWorker.getRegistrations().then(regs => {
+                        regs.forEach(r => { r.unregister().catch(() => {}); });
+                    }).catch(() => {});
+                } catch (e) {}
+            }
+        </script>
+    <meta name="description" content="AROMA - براند عطور عربي يجمع بين الفخامة والبساطة">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --rose-gold: #c38b6c;
+            --rose-gold-light: #e6c8b8;
+            --rose-gold-dark: #8e5f4a;
+            --gold: #d2b07b;
+            --gold-light: #f1e0c6;
+            --dark-bg: #0f0b0c;
+            --darker-bg: #0a0708;
+            --card-bg: rgba(255, 255, 255, 0.02);
+            --border: rgba(195, 139, 108, 0.25);
+            --border-light: rgba(195, 139, 108, 0.4);
+            --accent-blue: #6c7f9b;
+            --accent-purple: #7a6075;
+            --accent-silver: #c9c7c2;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: var(--dark-bg);
+            background-image: 
+                radial-gradient(ellipse at 0% 0%, rgba(195, 139, 108, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse at 100% 100%, rgba(108, 127, 155, 0.06) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 50%, rgba(122, 96, 117, 0.04) 0%, transparent 70%);
+            color: #cfc6bf;
+            line-height: 1.7;
+            overflow-x: hidden;
+            min-height: 100vh;
+            padding-top: 90px;
+            animation: pageLoad 0.8s ease;
+        }
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>ريحة - عطور تخلّي اللحظة تعيش أكثر</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="ريحة - براند عطور عربي يجمع بين الفخامة والبساطة. عطور ثابتة، روائح مميّزة، وتغليف أنيق.">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <script>
+        // Ensure any previously installed service workers are unregistered (helps stale-SW cases on phones)
+        if ('serviceWorker' in navigator) {
+            try {
+                navigator.serviceWorker.getRegistrations().then(regs => {
+                    regs.forEach(r => { r.unregister().catch(() => {}); });
+                }).catch(() => {});
+            } catch (e) {}
+        }
+    </script>
+    <style>
+        /* إعدادات عامة */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background-color: #111111;
+            color: #f5f0e8;
+            line-height: 1.7;
+        }
+
+        a { text-decoration: none; color: inherit; }
+
+        img { max-width: 100%; display: block; }
+
+        .container { width: 100%; max-width: 1100px; margin: 0 auto; padding: 0 16px; }
+
+        /* Header */
+        header { position: sticky; top: 0; z-index: 100; background: rgba(17,17,17,0.95); border-bottom: 1px solid rgba(201,163,107,0.2); backdrop-filter: blur(8px); }
+
+        .header-inner { display:flex; align-items:center; justify-content:space-between; padding:12px 0; }
+
+        .logo { font-size:24px; font-weight:700; letter-spacing:2px; }
+        .logo span { color: #c9a36b; }
+
+        nav ul { list-style: none; display:flex; gap:20px; font-size:14px; }
+
+        /* Hero */
+        .hero { min-height: 80vh; display:flex; align-items:center; padding:40px 0 60px; }
+
+        .hero-inner { display:flex; flex-wrap:wrap; gap:32px; align-items:center; }
+
+        .hero-title { font-size:42px; margin-bottom:12px; }
+
+        .btn { display:inline-block; padding:10px 18px; border-radius:100px; font-size:14px; border:1px solid transparent; cursor:pointer; }
+
+        .btn-primary { background: linear-gradient(135deg, #c9a36b, #e0c28c); color: #111111; font-weight:600; }
+
+        /* Sections */
+        section { padding:50px 0; }
+
+        .products-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap:20px; }
+
+        /* Footer */
+        footer { padding:16px 0 24px; font-size:12px; color:#8f8577; text-align:center; }
+
+        /* Search dropdown styles */
+        .search-dropdown { position: absolute; top: calc(100% + 10px); left: 0; right: 0; background: rgba(15, 15, 15, 0.98); border: 1px solid rgba(201, 163, 107, 0.25); border-radius: 15px; max-height: 350px; overflow-y: auto; display: none; box-shadow: 0 15px 50px rgba(0,0,0,0.8); backdrop-filter: blur(10px); z-index:2000; }
+
+        .search-dropdown.active { display: block; }
+
+        .search-dropdown-header { padding: 15px 20px; border-bottom: 1px solid rgba(201,163,107,0.25); font-size:12px; color:#c9a36b; letter-spacing:1px; text-transform:uppercase; }
+
+        .brand-search-item { padding:15px 20px; border-bottom:1px solid rgba(255,255,255,0.05); cursor:pointer; transition:0.2s ease; display:flex; justify-content:space-between; align-items:center; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-inner">
+            <div class="logo">ريحة <span>AROMA</span></div>
+            <nav>
+                <ul>
+                    <li><a href="#">الرئيسية</a></li>
+                    <li><a href="#">منتجات</a></li>
+                    <li><a href="#">عنّا</a></li>
+                    <li><a href="#">تواصل</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container hero-inner">
+                <div class="hero-text">
+                    <h1 class="hero-title">مجموعة عطور مميّزة</h1>
+                    <p class="hero-subtitle">روائح تبقى وتذكّرك بلحظاتك الخاصة.</p>
+                    <div class="hero-buttons">
+                        <a class="btn btn-primary" href="#">تسوّق الآن</a>
+                        <a class="btn btn-ghost" href="#">المزيد</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="hero-bottle"></div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="container">
+                <h2 class="section-title">منتجاتنا</h2>
+                <div class="products-grid">
+                    <div class="product-card">
+                        <div class="product-name">عطر العنبر</div>
+                        <div class="product-desc">رائحة دافئة وغنيّة بالعنبر.</div>
+                        <div class="product-meta"><span class="price">35$</span></div>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-name">عطر الورود</div>
+                        <div class="product-desc">مزيج زهري ناعم، مثالي للمساء.</div>
+                        <div class="product-meta"><span class="price">28$</span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">جميع الحقوق محفوظة © 2026</div>
+    </footer>
+</body>
+</html>
+        .logo-text::after {
+            content: 'عطور فاخرة';
+            position: absolute;
+            bottom: -12px;
+            left: 0;
+            right: 0;
+            font-size: 7px;
+            letter-spacing: 3px;
+            color: var(--rose-gold);
+            opacity: 0.6;
+            font-weight: 400;
+            text-align: center;
+        }
+
+        /* صندوق البحث */
+        .header-search {
+            flex: 1;
+            max-width: 450px;
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 12px 45px 12px 20px;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid var(--border);
+            border-radius: 50px;
+            color: #fff;
+            font-size: 14px;
+            font-family: 'Cairo', sans-serif;
+            outline: none;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .search-input:focus {
+            border-color: var(--rose-gold);
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 15px rgba(195, 139, 108, 0.15), 0 0 0 3px rgba(195, 139, 108, 0.08);
+            transform: translateY(-1px);
+        }
+
+        .search-input::placeholder { color: #666; }
+
+        .search-icon {
+            position: absolute;
+            left: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 16px;
+            color: var(--rose-gold);
+            pointer-events: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .clear-search {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: #666;
+            font-size: 20px;
+            cursor: pointer;
+            display: none;
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            align-items: center;
+            justify-content: center;
+        }
+
+        .clear-search.active { display: flex; }
+        .clear-search:hover { color: var(--rose-gold); }
+
+        /* نتائج البحث */
+        .search-dropdown {
+            position: absolute;
+            top: calc(100% + 10px);
+            left: 0;
+            right: 0;
+            background: rgba(15, 15, 15, 0.98);
+            border: 1px solid var(--border);
+            border-radius: 15px;
+            max-height: 350px;
+            overflow-y: auto;
+            display: none;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 2000;
+        }
+
+        .search-dropdown.active { display: block; }
+
+        .search-dropdown-header {
+            padding: 15px 20px;
+            border-bottom: 1px solid var(--border);
+            font-size: 12px;
+            color: var(--rose-gold);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .brand-search-item {
+            padding: 15px 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            cursor: pointer;
+            transition: 0.2s ease;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+*** End File
